@@ -34,3 +34,14 @@ extension ObjectFactories {
     
     
 }
+
+// MARK: - Coordinators Factories
+extension ObjectFactories: NavCoordinatorFactory { }
+
+extension ObjectFactories {
+    
+    func makeNavCoordinator(with vc: UIViewController) -> Coordinator {
+        return NavCoordinator(presenter: UINavigationController(rootViewController: vc))
+    }
+    
+}

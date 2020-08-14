@@ -25,6 +25,18 @@
 		073FFD9F24E706BD00C3461C /* ViewControllerFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFD9E24E706BD00C3461C /* ViewControllerFactories.swift */; };
 		073FFDA124E70A2800C3461C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDA024E70A2800C3461C /* RootTabBarController.swift */; };
 		073FFDA324E70E3200C3461C /* +UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDA224E70E3200C3461C /* +UIImage.swift */; };
+		073FFDA924E7171500C3461C /* CoordinatorFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDA824E7171500C3461C /* CoordinatorFactories.swift */; };
+		073FFDAB24E7192200C3461C /* NavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDAA24E7192200C3461C /* NavCoordinator.swift */; };
+		073FFDAF24E72FBE00C3461C /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDAD24E72FBE00C3461C /* TweetCell.swift */; };
+		073FFDB024E72FBE00C3461C /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 073FFDAE24E72FBE00C3461C /* TweetCell.xib */; };
+		073FFDB224E731D100C3461C /* FeedRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDB124E731D100C3461C /* FeedRootView.swift */; };
+		073FFDB424E732EB00C3461C /* +UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDB324E732EB00C3461C /* +UIView.swift */; };
+		073FFDB724E734CE00C3461C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDB624E734CE00C3461C /* User.swift */; };
+		073FFDB924E737C100C3461C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDB824E737C100C3461C /* Tweet.swift */; };
+		073FFDBB24E7387100C3461C /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDBA24E7387100C3461C /* Fetcher.swift */; };
+		073FFDBD24E7387B00C3461C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDBC24E7387B00C3461C /* Endpoint.swift */; };
+		073FFDBF24E73B7F00C3461C /* FetcherImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDBE24E73B7F00C3461C /* FetcherImplementation.swift */; };
+		073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDC024E73BD500C3461C /* APIErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +81,18 @@
 		073FFD9E24E706BD00C3461C /* ViewControllerFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactories.swift; sourceTree = "<group>"; };
 		073FFDA024E70A2800C3461C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		073FFDA224E70E3200C3461C /* +UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIImage.swift"; sourceTree = "<group>"; };
+		073FFDA824E7171500C3461C /* CoordinatorFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactories.swift; sourceTree = "<group>"; };
+		073FFDAA24E7192200C3461C /* NavCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavCoordinator.swift; sourceTree = "<group>"; };
+		073FFDAD24E72FBE00C3461C /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		073FFDAE24E72FBE00C3461C /* TweetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
+		073FFDB124E731D100C3461C /* FeedRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRootView.swift; sourceTree = "<group>"; };
+		073FFDB324E732EB00C3461C /* +UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIView.swift"; sourceTree = "<group>"; };
+		073FFDB624E734CE00C3461C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		073FFDB824E737C100C3461C /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		073FFDBA24E7387100C3461C /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		073FFDBC24E7387B00C3461C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		073FFDBE24E73B7F00C3461C /* FetcherImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherImplementation.swift; sourceTree = "<group>"; };
+		073FFDC024E73BD500C3461C /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +150,7 @@
 				073FFD8C24E6FBF400C3461C /* Coordinators */,
 				073FFD9B24E7032400C3461C /* Factories */,
 				073FFD8B24E6FA7D00C3461C /* Services */,
+				073FFDB524E734B900C3461C /* Model Layer */,
 				073FFD8824E6FA3F00C3461C /* View Model Layer */,
 				073FFD8724E6FA2C00C3461C /* View Layer */,
 				073FFD8624E6FA1A00C3461C /* View Controllers */,
@@ -168,6 +193,8 @@
 		073FFD8724E6FA2C00C3461C /* View Layer */ = {
 			isa = PBXGroup;
 			children = (
+				073FFDAC24E72F9400C3461C /* Cells */,
+				073FFDB124E731D100C3461C /* FeedRootView.swift */,
 			);
 			path = "View Layer";
 			sourceTree = "<group>";
@@ -185,6 +212,7 @@
 				073FFD9524E6FF5400C3461C /* +UIViewController.swift */,
 				073FFD9724E6FFD400C3461C /* +UIStoryboard.swift */,
 				073FFDA224E70E3200C3461C /* +UIImage.swift */,
+				073FFDB324E732EB00C3461C /* +UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +228,10 @@
 		073FFD8B24E6FA7D00C3461C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				073FFDBC24E7387B00C3461C /* Endpoint.swift */,
+				073FFDBA24E7387100C3461C /* Fetcher.swift */,
+				073FFDBE24E73B7F00C3461C /* FetcherImplementation.swift */,
+				073FFDC024E73BD500C3461C /* APIErrors.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -209,6 +241,7 @@
 			children = (
 				073FFD8D24E6FC7C00C3461C /* Coordinator.swift */,
 				073FFD8F24E6FCED00C3461C /* AppCoordinator.swift */,
+				073FFDAA24E7192200C3461C /* NavCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -218,8 +251,27 @@
 			children = (
 				073FFD9C24E7037400C3461C /* ObjectFactories.swift */,
 				073FFD9E24E706BD00C3461C /* ViewControllerFactories.swift */,
+				073FFDA824E7171500C3461C /* CoordinatorFactories.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		073FFDAC24E72F9400C3461C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				073FFDAD24E72FBE00C3461C /* TweetCell.swift */,
+				073FFDAE24E72FBE00C3461C /* TweetCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		073FFDB524E734B900C3461C /* Model Layer */ = {
+			isa = PBXGroup;
+			children = (
+				073FFDB624E734CE00C3461C /* User.swift */,
+				073FFDB824E737C100C3461C /* Tweet.swift */,
+			);
+			path = "Model Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +381,7 @@
 				073FFD6324E6F74500C3461C /* LaunchScreen.storyboard in Resources */,
 				073FFD6024E6F74500C3461C /* Assets.xcassets in Resources */,
 				073FFD5E24E6F74400C3461C /* Main.storyboard in Resources */,
+				073FFDB024E72FBE00C3461C /* TweetCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,19 +406,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073FFDB424E732EB00C3461C /* +UIView.swift in Sources */,
 				073FFD9824E6FFD400C3461C /* +UIStoryboard.swift in Sources */,
 				073FFDA124E70A2800C3461C /* RootTabBarController.swift in Sources */,
 				073FFD9D24E7037400C3461C /* ObjectFactories.swift in Sources */,
+				073FFDAF24E72FBE00C3461C /* TweetCell.swift in Sources */,
 				073FFD9424E6FF1400C3461C /* SearchViewController.swift in Sources */,
 				073FFD9624E6FF5400C3461C /* +UIViewController.swift in Sources */,
 				073FFD9024E6FCED00C3461C /* AppCoordinator.swift in Sources */,
 				073FFD5724E6F74400C3461C /* AppDelegate.swift in Sources */,
 				073FFD9A24E7001400C3461C /* Storyboarded.swift in Sources */,
+				073FFDB224E731D100C3461C /* FeedRootView.swift in Sources */,
+				073FFDB924E737C100C3461C /* Tweet.swift in Sources */,
+				073FFDA924E7171500C3461C /* CoordinatorFactories.swift in Sources */,
 				073FFD9224E6FEED00C3461C /* FeedViewController.swift in Sources */,
+				073FFDBF24E73B7F00C3461C /* FetcherImplementation.swift in Sources */,
+				073FFDBB24E7387100C3461C /* Fetcher.swift in Sources */,
 				073FFD5924E6F74400C3461C /* SceneDelegate.swift in Sources */,
+				073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */,
 				073FFDA324E70E3200C3461C /* +UIImage.swift in Sources */,
 				073FFD8E24E6FC7C00C3461C /* Coordinator.swift in Sources */,
 				073FFD9F24E706BD00C3461C /* ViewControllerFactories.swift in Sources */,
+				073FFDAB24E7192200C3461C /* NavCoordinator.swift in Sources */,
+				073FFDBD24E7387B00C3461C /* Endpoint.swift in Sources */,
+				073FFDB724E734CE00C3461C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

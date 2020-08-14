@@ -8,20 +8,32 @@
 
 import UIKit
 
-class RootTabBarController: UITabBarController {
+final class RootTabBarController: UITabBarController {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     let feedViewController: FeedViewController
     let searchViewController: SearchViewController
     
     init(feedVCFactory: FeedVCFactory, searchVCFactory: SearchVCFactory) {
+        let factory = ObjectFactories()
+        
         feedViewController = feedVCFactory.makeFeedViewController()
+        let feedCoordinator = factory.makeNavCoordinator(with: feedViewController)
+        feedViewController.navCoordinator = feedCoordinator
+        
         searchViewController = searchVCFactory.makeSearchViewController()
+        let searchCoordinator = factory.makeNavCoordinator(with: searchViewController)
+        searchViewController.navCoordinator = searchCoordinator
+        
         super.init(nibName: nil, bundle: nil)
         
-        viewControllers = [UINavigationController(rootViewController: feedViewController), UINavigationController(rootViewController: searchViewController)]
+        viewControllers = [feedCoordinator.rootViewController, searchCoordinator.rootViewController]
+        
         selectedIndex = 0
     }
     
     
+    
+    
 }
+

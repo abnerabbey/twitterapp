@@ -8,9 +8,15 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
+    
+    var navCoordinator: Coordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func loadView() {
+        view = FeedRootView()
     }
 }

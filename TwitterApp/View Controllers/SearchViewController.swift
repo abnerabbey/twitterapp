@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    var navCoordinator: Coordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
