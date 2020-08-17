@@ -10,5 +10,16 @@ import UIKit
 
 class TweetCell: UITableViewCell {
 
+    @IBOutlet weak var newImageView: UIImageView! {
+        didSet {
+            newImageView.layer.cornerRadius = 12
+        }
+    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     
+    func configure(with vm: TweetViewModel) {
+        titleLabel.text = vm.user.nickname
+        subtitleLabel.text = vm.text
+    }
 }

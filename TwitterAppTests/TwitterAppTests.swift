@@ -10,25 +10,44 @@ import XCTest
 @testable import TwitterApp
 
 class TwitterAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var sut: FeedViewModel!
+    var mockAPIService: MockFetcher<[Tweet]>!
+    
+    override func setUp() {
+        super.setUp()
+        mockAPIService = MockFetcher()
+        sut = FeedViewModel(fetcher: AnyFetcher(fetcher: mockAPIService))
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        sut = nil
+        mockAPIService = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testViewModelStateNotNil() {
+        XCTAssertNotNil(sut.state)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testViewModelIsFetching() {
+        sut.fetchTimeLine()
+        XCTAssertTrue(sut.state.value == .fetching, "State is not error")
+        
+    }
+    
+    func testFetchingFailed() {
+        
+        let exp = expectation(description: "failing fetch")
+        sut.fetchTimeLine()
+        var stat: State? = sut.state.value
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.mockAPIService.fetchFail(error: .anError)
+            stat = self.sut.state.value
+            exp.fulfill()
         }
+        wait(for: [exp], timeout: 2)
+        XCTAssertTrue(stat == .error, "Not error in response")
     }
-
+    
 }

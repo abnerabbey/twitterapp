@@ -19,7 +19,7 @@ struct Tweet: Codable {
 extension Tweet {
     
     private enum CodingKeys: String, CodingKey {
-        case creation
+        case creation = "created_at"
         case id = "id_str"
         case text
         case user

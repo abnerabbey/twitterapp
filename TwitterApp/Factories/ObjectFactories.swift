@@ -20,7 +20,7 @@ extension ObjectFactories {
     
     func makeFeedViewController() -> FeedViewController {
         guard let feedViewController = instantiateViewController(withIdentifier: .feed) as? FeedViewController else { fatalError("Invalid Feed View Controller Creation") }
-        
+        feedViewController.viewModel = FeedViewModel(fetcher: AnyFetcher(fetcher: FetcherImplementation()))
         feedViewController.tabBarItem = .init(title: "Feed", image: .init(assetIdenfier: .feed), tag: 0)
         return feedViewController
     }

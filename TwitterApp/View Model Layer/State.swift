@@ -1,5 +1,5 @@
 //
-//  APIErrors.swift
+//  State.swift
 //  TwitterApp
 //
 //  Created by Abner Castro on 14/08/20.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum APIErrors: Error {
-    case anError
-    case err(String)
+enum State: Equatable {
+    case fetching
+    case success
+    case error
 }
+

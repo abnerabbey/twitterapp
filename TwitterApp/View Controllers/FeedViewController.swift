@@ -11,12 +11,14 @@ import UIKit
 final class FeedViewController: UIViewController {
     
     var navCoordinator: Coordinator?
+    var viewModel: FeedViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func loadView() {
-        view = FeedRootView()
+        guard let viewModel = viewModel else { return }
+        view = FeedRootView(viewModel: viewModel)
     }
 }

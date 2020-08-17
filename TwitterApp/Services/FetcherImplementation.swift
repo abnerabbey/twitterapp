@@ -33,5 +33,6 @@ class FetcherImplementation<T: Codable>: Fetcher {
                 completion(.failure(error))
             }
         }
+        .resume()
     }
 }
