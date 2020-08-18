@@ -12,13 +12,23 @@ import Foundation
 final class MockFetcher<T: Codable>: Fetcher {
     typealias Model = T
     
-    private var completClosure: ((Result<Model, Error>) -> ())!
+    var tweets: Model
+    
+    var completClosure: ((Result<Model, Error>) -> ())!
+    
+    init(tweets: Model) {
+        self.tweets = tweets
+    }
     
     func request(_ endpoint: Endpoint, completion: @escaping (Result<Model, Error>) -> ()) {
         completClosure = completion
     }
     
     func fetchFail(error: APIErrors) {
-        
+        completClosure(.failure(error))
+    }
+    
+    func fetchWithSuccess() {
+        completClosure(.success(tweets))
     }
 }

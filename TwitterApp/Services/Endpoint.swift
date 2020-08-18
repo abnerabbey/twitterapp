@@ -24,6 +24,9 @@ extension Endpoint {
         case .timeline:
             guard let url = URL(string: Endpoint.baseURL + "/api/statuses/user_timeline") else { fatalError("Invalid URL") }
             return URLRequest(url: url)
+        case .search(let string):
+            guard let url = URL(string: Endpoint.baseURL + "/api/search/\(string)") else { fatalError("Invalid URL") }
+            return URLRequest(url: url)
         default:
             fatalError("Not implemented")
             break

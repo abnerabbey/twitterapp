@@ -1,8 +1,8 @@
 //
-//  TwitterAppTests.swift
+//  ViewModelMockTests.swift
 //  TwitterAppTests
 //
-//  Created by Abner Castro on 14/08/20.
+//  Created by Abner Castro on 18/08/20.
 //  Copyright © 2020 Abner Castro. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class TwitterAppTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockAPIService = MockFetcher()
+        mockAPIService = MockFetcher(tweets: [])
         sut = FeedViewModel(fetcher: AnyFetcher(fetcher: mockAPIService))
     }
     
@@ -30,6 +30,10 @@ class TwitterAppTests: XCTestCase {
         XCTAssertNotNil(sut.state)
     }
     
+    func testViewModelTweetsVariableIsEmpty() {
+        XCTAssertEqual(sut.tweetsCount, 0, "Varaible that contains tweets is not empty")
+    }
+    
     func testViewModelIsFetching() {
         sut.fetchTimeLine()
         XCTAssertTrue(sut.state.value == .fetching, "State is not error")
@@ -38,16 +42,29 @@ class TwitterAppTests: XCTestCase {
     
     func testFetchingFailed() {
         
-        let exp = expectation(description: "failing fetch")
+//        given
+        let state: State = .error
+        
+//        when
         sut.fetchTimeLine()
-        var stat: State? = sut.state.value
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.mockAPIService.fetchFail(error: .anError)
-            stat = self.sut.state.value
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 2)
-        XCTAssertTrue(stat == .error, "Not error in response")
+        mockAPIService.fetchFail(error: .anError)
+        
+//        then
+        XCTAssertEqual(sut.state.value, state, "Thist test wasn't an error value")
+    }
+    
+    func testFetchingSuccess() {
+        
+//        given
+        let state: State = .success
+        
+//        when
+        sut.fetchTimeLine()
+        mockAPIService.fetchWithSuccess()
+        
+//        then
+        XCTAssertEqual(sut.state.value, state, "This test wasn't a success value")
+        
     }
     
 }

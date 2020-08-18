@@ -13,6 +13,7 @@ extension UIImage {
     enum AssetIdentifier: String {
         case feed
         case search
+        case gato
     }
     
     convenience init!(assetIdenfier identifier: AssetIdentifier) {

@@ -12,13 +12,21 @@ final class FeedViewController: UIViewController {
     
     var navCoordinator: Coordinator?
     var viewModel: FeedViewModel?
+    var rootView: FeedRootView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
     override func loadView() {
         guard let viewModel = viewModel else { return }
-        view = FeedRootView(viewModel: viewModel)
+        rootView = FeedRootView(viewModel: viewModel)
+        view = rootView
+    }
+    
+    private func setupUI() {
+        title = "WizeTweet"
+        
     }
 }

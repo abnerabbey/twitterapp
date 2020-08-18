@@ -17,20 +17,22 @@ class FetcherImplementation<T: Codable>: Fetcher {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else { completion(.failure(APIErrors.err("No data")))
-                return
-            }
-            
-            do {
-                let result = try JSONDecoder().decode(Model.self, from: data)
-                completion(.success(result))
-            } catch {
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else { completion(.failure(APIErrors.err("No data")))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(Model.self, from: data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
             }
         }
         .resume()

@@ -27,7 +27,7 @@ struct UserViewModel: UserViewModelable {
     }
     
     var nickname: String {
-        return user.nickname
+        return "@" + user.nickname
     }
     
     var description: String {
@@ -51,11 +51,13 @@ struct UserViewModel: UserViewModelable {
     }
     
     var profileImageURL: String {
-        return user.profileImageURL
+        guard let stringURL = user.profileImageURL else { return "" }
+        return stringURL
     }
     
     var coverImageURL: String {
-        return user.coverImageURL
+        guard let stringURL = user.profileImageURL else { return "" }
+        return stringURL
     }
     
     

@@ -27,7 +27,7 @@ extension ObjectFactories {
     
     func makeSearchViewController() -> SearchViewController {
         guard let searchViewController = instantiateViewController(withIdentifier: .search) as? SearchViewController else { fatalError("Invalid Search View Controller Creation") }
-        
+        searchViewController.viewModel = SearchViewModel(fetcher: AnyFetcher(fetcher: FetcherImplementation()))
         searchViewController.tabBarItem = .init(title: "Search", image: .init(assetIdenfier: .search), tag: 1)
         return searchViewController
     }

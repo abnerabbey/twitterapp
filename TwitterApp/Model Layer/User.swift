@@ -16,8 +16,8 @@ struct User: Codable {
     let followers: Int
     let creation: String
     let backgroundColor: String
-    let profileImageURL: String
-    let coverImageURL: String
+    let profileImageURL: String?
+    let coverImageURL: String?
 }
 
 extension User {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FeedRootView: UIView {
+final class FeedRootView: UIView, FetchableImage {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     private let tableView: UITableView = {
@@ -16,9 +16,9 @@ final class FeedRootView: UIView {
         return table
     }()
     
-    var viewModel: FeedViewModel
+    var viewModel: FeedViewModelInterface
     
-    init(frame: CGRect = .zero, viewModel: FeedViewModel) {
+    init(frame: CGRect = .zero, viewModel: FeedViewModelInterface) {
         self.viewModel = viewModel
         super.init(frame: frame)
         constructHierarchy()
@@ -27,7 +27,6 @@ final class FeedRootView: UIView {
         bindViewModel()
         viewModel.fetchTimeLine()
     }
-    
 }
 
 // MARK: - Table View Delegates
@@ -39,13 +38,29 @@ extension FeedRootView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? TweetCell else { fatalError("Invalid Feed Cell") }
-        
         let vm = viewModel[indexPath.row]
         cell.configure(with: vm)
-        
+        fetchImage(from: vm.user.profileImageURL) { data in
+            DispatchQueue.main.async {
+                guard let data = data else { return }
+                cell.newImageView.image = UIImage(data: data)
+            }
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+}
+
+// MARK: - SearchController Delegates
+extension FeedRootView: UISearchBarDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text, !text.isEmpty else { return }
+        viewModel.fetchByHashTag(text)
+    }
 }
 
 // MARK: - View Hierarchy
@@ -58,7 +73,7 @@ extension FeedRootView {
     private func setupUI() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(.init(nibName: "TweetCell", bundle: .main), forCellReuseIdentifier: "feedCell")
+        tableView.register(TweetCell.self, forCellReuseIdentifier: "feedCell")
     }
     
 }
@@ -77,7 +92,6 @@ extension FeedRootView {
 }
 
 // MARK: - View Model Bindings
-
 extension FeedRootView {
     
     private func bindViewModel() {
@@ -85,6 +99,8 @@ extension FeedRootView {
             switch state {
             case .success:
                 self.tableView.reloadData()
+            case .error:
+                print("there's an error")
             default:
                 break
             }

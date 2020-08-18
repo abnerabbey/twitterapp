@@ -1,31 +1,30 @@
 //
-//  FeedViewModel.swift
+//  SearchViewModel.swift
 //  TwitterApp
 //
-//  Created by Abner Castro on 14/08/20.
+//  Created by Abner Castro on 18/08/20.
 //  Copyright © 2020 Abner Castro. All rights reserved.
 //
 
 import Foundation
 
-class FeedViewModel {
+final class SearchViewModel {
     
-    let fetcher: AnyFetcher<[Tweet]>
-    var state = Binder<State>(nil)
-    
+    private let fetcher: AnyFetcher<SearchResult>
     private var tweets = Binder<[TweetViewModel]>([])
     
+    var state: Binder<State> = Binder(nil)
     
-    init(fetcher: AnyFetcher<[Tweet]>) {
+    init(fetcher: AnyFetcher<SearchResult>) {
         self.fetcher = fetcher
     }
     
-    func fetchTimeLine() {
+    func fetchByHashTag(_ string: String) {
         state.value = .fetching
-        fetcher.request(.timeline) { [weak self] result in
+        fetcher.request(.search(string)) { [weak self] result in
             switch result {
-            case .success(let tweets):
-                self?.tweets.value = tweets.map { TweetViewModel(tweet: $0) }
+            case .success(let searchResult):
+                self?.tweets.value = searchResult.tweets.map { TweetViewModel(tweet: $0) }
                 self?.state.value = .success
             case .failure(_):
                 self?.state.value = .error
@@ -35,7 +34,7 @@ class FeedViewModel {
     }
 }
 
-extension FeedViewModel: FeedViewModelInterface {
+extension SearchViewModel: FeedViewModelInterface {
     
     subscript(index: Int) -> TweetViewModel {
         get {
