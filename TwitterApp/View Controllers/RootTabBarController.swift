@@ -19,7 +19,7 @@ final class RootTabBarController: UITabBarController {
         
         feedViewController = feedVCFactory.makeFeedViewController()
         let feedCoordinator = factory.makeNavCoordinator(with: feedViewController)
-        feedViewController.navCoordinator = feedCoordinator
+        feedViewController.navCoordinator = feedCoordinator as? NavCoordinator
         
         searchViewController = searchVCFactory.makeSearchViewController()
         let searchCoordinator = factory.makeNavCoordinator(with: searchViewController)

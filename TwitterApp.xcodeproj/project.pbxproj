@@ -48,6 +48,9 @@
 		073FFDCD24E74B7E00C3461C /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDCC24E74B7E00C3461C /* +UIColor.swift */; };
 		073FFDCF24E74EEB00C3461C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDCE24E74EEB00C3461C /* State.swift */; };
 		076F34F724F2BAD10054B055 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34F624F2BAD10054B055 /* SearchViewModelTests.swift */; };
+		076F34F924F2C37D0054B055 /* Compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076F34F824F2C37D0054B055 /* Compose.storyboard */; };
+		076F34FB24F2C3F70054B055 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34FA24F2C3F70054B055 /* ComposeViewController.swift */; };
+		076F34FD24F2C4B70054B055 /* ComposeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34FC24F2C4B70054B055 /* ComposeRootView.swift */; };
 		0779624F24EAE45B00F12E7B /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779624E24EAE45B00F12E7B /* MockFetcher.swift */; };
 		0779625324EB5C0600F12E7B /* FetchableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779625224EB5C0600F12E7B /* FetchableImage.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +120,9 @@
 		073FFDCC24E74B7E00C3461C /* +UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
 		073FFDCE24E74EEB00C3461C /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		076F34F624F2BAD10054B055 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		076F34F824F2C37D0054B055 /* Compose.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Compose.storyboard; sourceTree = "<group>"; };
+		076F34FA24F2C3F70054B055 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		076F34FC24F2C4B70054B055 /* ComposeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeRootView.swift; sourceTree = "<group>"; };
 		0779624E24EAE45B00F12E7B /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
 		0779625224EB5C0600F12E7B /* FetchableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +187,7 @@
 				073FFD8724E6FA2C00C3461C /* View Layer */,
 				073FFD8624E6FA1A00C3461C /* View Controllers */,
 				073FFD5C24E6F74400C3461C /* Main.storyboard */,
+				076F34F824F2C37D0054B055 /* Compose.storyboard */,
 				073FFD5F24E6F74500C3461C /* Assets.xcassets */,
 				073FFD6124E6F74500C3461C /* LaunchScreen.storyboard */,
 				073FFD6424E6F74500C3461C /* Info.plist */,
@@ -214,6 +221,7 @@
 				073FFDA024E70A2800C3461C /* RootTabBarController.swift */,
 				073FFD9124E6FEED00C3461C /* FeedViewController.swift */,
 				073FFD9324E6FF1400C3461C /* SearchViewController.swift */,
+				076F34FA24F2C3F70054B055 /* ComposeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 			children = (
 				073FFDAC24E72F9400C3461C /* Cells */,
 				073FFDB124E731D100C3461C /* FeedRootView.swift */,
+				076F34FC24F2C4B70054B055 /* ComposeRootView.swift */,
 			);
 			path = "View Layer";
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 				073FFD6324E6F74500C3461C /* LaunchScreen.storyboard in Resources */,
 				073FFD6024E6F74500C3461C /* Assets.xcassets in Resources */,
 				073FFD5E24E6F74400C3461C /* Main.storyboard in Resources */,
+				076F34F924F2C37D0054B055 /* Compose.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +505,7 @@
 				073FFDC724E7459500C3461C /* FeedViewModel.swift in Sources */,
 				073FFD5924E6F74400C3461C /* SceneDelegate.swift in Sources */,
 				073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */,
+				076F34FB24F2C3F70054B055 /* ComposeViewController.swift in Sources */,
 				073FFDA324E70E3200C3461C /* +UIImage.swift in Sources */,
 				073FFD8E24E6FC7C00C3461C /* Coordinator.swift in Sources */,
 				073FFDC324E7434E00C3461C /* Bindable.swift in Sources */,
@@ -502,6 +513,7 @@
 				073FFDAB24E7192200C3461C /* NavCoordinator.swift in Sources */,
 				073FFDCD24E74B7E00C3461C /* +UIColor.swift in Sources */,
 				073FFDBD24E7387B00C3461C /* Endpoint.swift in Sources */,
+				076F34FD24F2C4B70054B055 /* ComposeRootView.swift in Sources */,
 				073FFDB724E734CE00C3461C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

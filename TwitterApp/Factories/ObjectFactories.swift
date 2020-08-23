@@ -14,7 +14,7 @@ class ObjectFactories: Storyboarded {
 }
 
 // MARK: - View Controllers Factories
-extension ObjectFactories: FeedVCFactory, SearchVCFactory { }
+extension ObjectFactories: FeedVCFactory, SearchVCFactory, ComposeVCFactory { }
 
 extension ObjectFactories {
     
@@ -32,6 +32,10 @@ extension ObjectFactories {
         return searchViewController
     }
     
+    func makeComposeViewController() -> ComposeViewController {
+        guard let composeViewController = instantiateViewController(withIdentifier: .composeVC, withStoryboardName: .compose) as? ComposeViewController else { fatalError("Invalid Compose View Controller Creation") }
+        return composeViewController
+    }
     
 }
 

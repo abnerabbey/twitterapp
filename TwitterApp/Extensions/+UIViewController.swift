@@ -13,5 +13,6 @@ extension UIViewController {
     enum Identifier: String {
         case feed = "feedVC"
         case search = "searchVC"
+        case composeVC = "composeVC"
     }
 }

@@ -25,7 +25,7 @@ final class FeedRootView: UIView, FetchableImage {
         activateConstraints()
         setupUI()
         bindViewModel()
-        viewModel.fetchTimeLine()
+//        viewModel.fetchTimeLine()
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
-    var navCoordinator: Coordinator?
+    var navCoordinator: NavCoordinator?
     var viewModel: FeedViewModel?
     var rootView: FeedRootView?
 
@@ -27,6 +27,11 @@ final class FeedViewController: UIViewController {
     
     private func setupUI() {
         title = "WizeTweet"
-        
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(composeTweet))
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc private func composeTweet() {
+        navCoordinator?.goToComposeTweetVC()
     }
 }

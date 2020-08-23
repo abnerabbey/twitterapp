@@ -20,9 +20,9 @@ extension Storyboarded {
         var storyboard: UIStoryboard
         if let name = name {
             storyboard = UIStoryboard(name: name.rawValue, bundle: .main)
+        } else {
+            storyboard = UIStoryboard(name: "Main", bundle: .main)
         }
-        storyboard = UIStoryboard(name: "Main", bundle: .main)
-        
         return storyboard.instantiateViewController(withIdentifier: identifer.rawValue)
     }
     

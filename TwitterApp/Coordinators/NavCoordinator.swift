@@ -27,3 +27,15 @@ extension NavCoordinator: Coordinator {
     func start() {}
     
 }
+
+// MARK: - Navigation Methods
+extension NavCoordinator {
+    
+    func goToComposeTweetVC() {
+        let factory = ObjectFactories()
+        let composeVC = factory.makeComposeViewController()
+        let nv = UINavigationController(rootViewController: composeVC)
+        presenter.present(nv, animated: true, completion: nil)
+    }
+    
+}

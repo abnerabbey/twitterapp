@@ -19,3 +19,7 @@ protocol FeedVCFactory {
 protocol SearchVCFactory {
     func makeSearchViewController() -> SearchViewController
 }
+
+protocol ComposeVCFactory {
+    func makeComposeViewController() -> ComposeViewController
+}
