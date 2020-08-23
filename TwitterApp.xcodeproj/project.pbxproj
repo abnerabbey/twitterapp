@@ -47,6 +47,7 @@
 		073FFDCB24E7492700C3461C /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDCA24E7492700C3461C /* UserViewModel.swift */; };
 		073FFDCD24E74B7E00C3461C /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDCC24E74B7E00C3461C /* +UIColor.swift */; };
 		073FFDCF24E74EEB00C3461C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDCE24E74EEB00C3461C /* State.swift */; };
+		076F34F724F2BAD10054B055 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34F624F2BAD10054B055 /* SearchViewModelTests.swift */; };
 		0779624F24EAE45B00F12E7B /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779624E24EAE45B00F12E7B /* MockFetcher.swift */; };
 		0779625324EB5C0600F12E7B /* FetchableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779625224EB5C0600F12E7B /* FetchableImage.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		073FFDCA24E7492700C3461C /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		073FFDCC24E74B7E00C3461C /* +UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
 		073FFDCE24E74EEB00C3461C /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		076F34F624F2BAD10054B055 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		0779624E24EAE45B00F12E7B /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
 		0779625224EB5C0600F12E7B /* FetchableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,10 +191,10 @@
 		073FFD6C24E6F74500C3461C /* TwitterAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				076F34F524F2BAB60054B055 /* SearchTests */,
+				076F34F424F2BA9F0054B055 /* FeedTests */,
 				0779624D24EAE44600F12E7B /* Mocks */,
 				073FFD6F24E6F74500C3461C /* Info.plist */,
-				072E51C424EC375200135422 /* ViewModelMockTests.swift */,
-				072E51C624EC377900135422 /* ViewModelSlowTests.swift */,
 			);
 			path = TwitterAppTests;
 			sourceTree = "<group>";
@@ -308,6 +310,23 @@
 				072E51CC24EC5EFE00135422 /* SearchResult.swift */,
 			);
 			path = "Model Layer";
+			sourceTree = "<group>";
+		};
+		076F34F424F2BA9F0054B055 /* FeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				072E51C424EC375200135422 /* ViewModelMockTests.swift */,
+				072E51C624EC377900135422 /* ViewModelSlowTests.swift */,
+			);
+			path = FeedTests;
+			sourceTree = "<group>";
+		};
+		076F34F524F2BAB60054B055 /* SearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				076F34F624F2BAD10054B055 /* SearchViewModelTests.swift */,
+			);
+			path = SearchTests;
 			sourceTree = "<group>";
 		};
 		0779624D24EAE44600F12E7B /* Mocks */ = {
@@ -493,6 +512,7 @@
 			files = (
 				072E51C524EC375200135422 /* ViewModelMockTests.swift in Sources */,
 				072E51C724EC377900135422 /* ViewModelSlowTests.swift in Sources */,
+				076F34F724F2BAD10054B055 /* SearchViewModelTests.swift in Sources */,
 				0779624F24EAE45B00F12E7B /* MockFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
