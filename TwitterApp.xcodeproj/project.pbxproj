@@ -37,6 +37,7 @@
 		073FFDBD24E7387B00C3461C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDBC24E7387B00C3461C /* Endpoint.swift */; };
 		073FFDBF24E73B7F00C3461C /* FetcherImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDBE24E73B7F00C3461C /* FetcherImplementation.swift */; };
 		073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073FFDC024E73BD500C3461C /* APIErrors.swift */; };
+		076F34FF24F2D5C50054B055 /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34FE24F2D5C50054B055 /* +UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		073FFDBC24E7387B00C3461C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		073FFDBE24E73B7F00C3461C /* FetcherImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherImplementation.swift; sourceTree = "<group>"; };
 		073FFDC024E73BD500C3461C /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		076F34FE24F2D5C50054B055 /* +UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				073FFD9724E6FFD400C3461C /* +UIStoryboard.swift */,
 				073FFDA224E70E3200C3461C /* +UIImage.swift */,
 				073FFDB324E732EB00C3461C /* +UIView.swift */,
+				076F34FE24F2D5C50054B055 /* +UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				073FFDBF24E73B7F00C3461C /* FetcherImplementation.swift in Sources */,
 				073FFDBB24E7387100C3461C /* Fetcher.swift in Sources */,
 				073FFD5924E6F74400C3461C /* SceneDelegate.swift in Sources */,
+				076F34FF24F2D5C50054B055 /* +UIColor.swift in Sources */,
 				073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */,
 				073FFDA324E70E3200C3461C /* +UIImage.swift in Sources */,
 				073FFD8E24E6FC7C00C3461C /* Coordinator.swift in Sources */,
