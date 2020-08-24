@@ -22,7 +22,7 @@ struct Binder<T>: Bindable {
         }
     }
     
-    init(_ value: State?) {
+    init(_ value: State? = nil) {
         self.value = value
     }
     

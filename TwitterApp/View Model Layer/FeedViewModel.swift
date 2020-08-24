@@ -11,7 +11,7 @@ import Foundation
 class FeedViewModel {
     
     let fetcher: AnyFetcher<[Tweet]>
-    var state = Binder<State>(nil)
+    var state = Binder<State>()
     
     private var tweets = Binder<[TweetViewModel]>([])
     

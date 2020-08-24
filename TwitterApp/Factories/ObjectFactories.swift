@@ -34,6 +34,7 @@ extension ObjectFactories {
     
     func makeComposeViewController() -> ComposeViewController {
         guard let composeViewController = instantiateViewController(withIdentifier: .composeVC, withStoryboardName: .compose) as? ComposeViewController else { fatalError("Invalid Compose View Controller Creation") }
+        composeViewController.viewModel = ComposeViewModel()
         return composeViewController
     }
     

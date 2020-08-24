@@ -11,6 +11,8 @@ import UIKit
 
 extension UIColor {
     
+    static let redMain = UIColor(red: 0.94, green: 0.20, blue: 0.20, alpha: 1.00)
+    
     convenience init(hexString: String) {
         var cString:String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 

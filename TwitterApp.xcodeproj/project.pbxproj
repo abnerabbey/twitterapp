@@ -51,8 +51,13 @@
 		076F34F924F2C37D0054B055 /* Compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076F34F824F2C37D0054B055 /* Compose.storyboard */; };
 		076F34FB24F2C3F70054B055 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34FA24F2C3F70054B055 /* ComposeViewController.swift */; };
 		076F34FD24F2C4B70054B055 /* ComposeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F34FC24F2C4B70054B055 /* ComposeRootView.swift */; };
+		076F350124F2E3D20054B055 /* ComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F350024F2E3D20054B055 /* ComposeViewModel.swift */; };
+		076F350324F2E5AF0054B055 /* ComposeViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F350224F2E5AF0054B055 /* ComposeViewModelInterface.swift */; };
 		0779624F24EAE45B00F12E7B /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779624E24EAE45B00F12E7B /* MockFetcher.swift */; };
 		0779625324EB5C0600F12E7B /* FetchableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779625224EB5C0600F12E7B /* FetchableImage.swift */; };
+		0791B43424F41CBE00643BE5 /* +PHPhotosLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791B43324F41CBE00643BE5 /* +PHPhotosLibrary.swift */; };
+		0791B43824F432B400643BE5 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791B43724F432B400643BE5 /* PhotosCell.swift */; };
+		0791B43A24F43D8800643BE5 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791B43924F43D8800643BE5 /* CollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +128,13 @@
 		076F34F824F2C37D0054B055 /* Compose.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Compose.storyboard; sourceTree = "<group>"; };
 		076F34FA24F2C3F70054B055 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		076F34FC24F2C4B70054B055 /* ComposeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeRootView.swift; sourceTree = "<group>"; };
+		076F350024F2E3D20054B055 /* ComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewModel.swift; sourceTree = "<group>"; };
+		076F350224F2E5AF0054B055 /* ComposeViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewModelInterface.swift; sourceTree = "<group>"; };
 		0779624E24EAE45B00F12E7B /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
 		0779625224EB5C0600F12E7B /* FetchableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableImage.swift; sourceTree = "<group>"; };
+		0791B43324F41CBE00643BE5 /* +PHPhotosLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+PHPhotosLibrary.swift"; sourceTree = "<group>"; };
+		0791B43724F432B400643BE5 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		0791B43924F43D8800643BE5 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +242,7 @@
 				073FFDAC24E72F9400C3461C /* Cells */,
 				073FFDB124E731D100C3461C /* FeedRootView.swift */,
 				076F34FC24F2C4B70054B055 /* ComposeRootView.swift */,
+				0791B43924F43D8800643BE5 /* CollectionViewDataSource.swift */,
 			);
 			path = "View Layer";
 			sourceTree = "<group>";
@@ -245,6 +256,8 @@
 				072E51CA24EC53DD00135422 /* FeedViewModelInterface.swift */,
 				073FFDC624E7459500C3461C /* FeedViewModel.swift */,
 				072E51C824EC53B000135422 /* SearchViewModel.swift */,
+				076F350024F2E3D20054B055 /* ComposeViewModel.swift */,
+				076F350224F2E5AF0054B055 /* ComposeViewModelInterface.swift */,
 			);
 			path = "View Model Layer";
 			sourceTree = "<group>";
@@ -257,6 +270,7 @@
 				073FFDA224E70E3200C3461C /* +UIImage.swift */,
 				073FFDB324E732EB00C3461C /* +UIView.swift */,
 				073FFDCC24E74B7E00C3461C /* +UIColor.swift */,
+				0791B43324F41CBE00643BE5 /* +PHPhotosLibrary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				073FFDAD24E72FBE00C3461C /* TweetCell.swift */,
+				0791B43724F432B400643BE5 /* PhotosCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -487,12 +502,16 @@
 				073FFD9D24E7037400C3461C /* ObjectFactories.swift in Sources */,
 				073FFDAF24E72FBE00C3461C /* TweetCell.swift in Sources */,
 				073FFD9424E6FF1400C3461C /* SearchViewController.swift in Sources */,
+				076F350324F2E5AF0054B055 /* ComposeViewModelInterface.swift in Sources */,
 				073FFDCF24E74EEB00C3461C /* State.swift in Sources */,
 				073FFD9624E6FF5400C3461C /* +UIViewController.swift in Sources */,
 				073FFDC924E7484D00C3461C /* TweetViewModel.swift in Sources */,
+				0791B43A24F43D8800643BE5 /* CollectionViewDataSource.swift in Sources */,
+				0791B43824F432B400643BE5 /* PhotosCell.swift in Sources */,
 				073FFD9024E6FCED00C3461C /* AppCoordinator.swift in Sources */,
 				073FFD5724E6F74400C3461C /* AppDelegate.swift in Sources */,
 				073FFD9A24E7001400C3461C /* Storyboarded.swift in Sources */,
+				076F350124F2E3D20054B055 /* ComposeViewModel.swift in Sources */,
 				073FFDB224E731D100C3461C /* FeedRootView.swift in Sources */,
 				072E51CB24EC53DD00135422 /* FeedViewModelInterface.swift in Sources */,
 				073FFDB924E737C100C3461C /* Tweet.swift in Sources */,
@@ -506,6 +525,7 @@
 				073FFD5924E6F74400C3461C /* SceneDelegate.swift in Sources */,
 				073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */,
 				076F34FB24F2C3F70054B055 /* ComposeViewController.swift in Sources */,
+				0791B43424F41CBE00643BE5 /* +PHPhotosLibrary.swift in Sources */,
 				073FFDA324E70E3200C3461C /* +UIImage.swift in Sources */,
 				073FFD8E24E6FC7C00C3461C /* Coordinator.swift in Sources */,
 				073FFDC324E7434E00C3461C /* Bindable.swift in Sources */,
