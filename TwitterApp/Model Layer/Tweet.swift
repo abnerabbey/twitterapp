@@ -14,6 +14,8 @@ struct Tweet: Codable {
     let id: String
     let text: String
     let user: User
+    let favs: Int
+    let retweets: Int
 }
 
 extension Tweet {
@@ -23,6 +25,8 @@ extension Tweet {
         case id = "id_str"
         case text
         case user
+        case favs = "favorite_count"
+        case retweets = "retweet_count"
     }
     
 }

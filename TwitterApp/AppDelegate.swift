@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = .redMain
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barStyle = .black
-        UITabBar.appearance().barTintColor = .redMain
-        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().tintColor = .redMain
         
         return true
     }

@@ -14,6 +14,10 @@ extension UIImage {
         case feed
         case search
         case gato
+        case fav
+        case ret
+        case comment
+        case share
     }
     
     convenience init!(assetIdenfier identifier: AssetIdentifier) {

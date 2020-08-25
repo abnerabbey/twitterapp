@@ -44,18 +44,61 @@ final class TweetCell: UITableViewCell {
         return label
     }()
     
+    let commentButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(assetIdenfier: .comment), for: .normal)
+        button.tintColor = .redMain
+        return button
+    }()
+    
+    let retButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(assetIdenfier: .ret), for: .normal)
+        button.tintColor = .redMain
+        return button
+    }()
+    
+    let favButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(assetIdenfier: .fav), for: .normal)
+        button.tintColor = .redMain
+        return button
+    }()
+    
+    let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(assetIdenfier: .share), for: .normal)
+        button.tintColor = .redMain
+        return button
+    }()
+    
+    private lazy var buttonsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [commentButton, retButton, favButton, shareButton])
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        return stack
+    }()
+    
+    var shareTapped = Binder<String>()
+    var viewModel: TweetViewModel?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         activateConstraints()
     }
     
-    
-    
     func configure(with vm: TweetViewModel) {
+        viewModel = vm
         titleLabel.text = vm.user.name
         subtitleLabel.text = vm.user.nickname
         descriptionLabel.text = vm.text
+        shareButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+    }
+    
+    @objc func shareAction() {
+        guard let vm = viewModel else { return }
+        shareTapped.value = vm.text
     }
 }
 
@@ -67,13 +110,15 @@ extension TweetCell {
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(descriptionLabel)
+        addSubview(buttonsStack)
     }
     
     private func activateConstraints() {
         newImageView.anchor(top: topAnchor, leading: leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 12, left: 12, bottom: 0, right: 0), size: .init(width: 50, height: 50))
         titleLabel.anchor(top: newImageView.topAnchor, leading: newImageView.trailingAnchor, trailing: trailingAnchor, bottom: nil, padding: .init(top: 0, left: 4, bottom: 0, right: 12), size: .init(width: 0, height: 20))
         subtitleLabel.anchor(top: titleLabel.bottomAnchor, leading: titleLabel.leadingAnchor, trailing: titleLabel.trailingAnchor, bottom: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 20))
-        descriptionLabel.anchor(top: subtitleLabel.bottomAnchor, leading: subtitleLabel.leadingAnchor, trailing: subtitleLabel.trailingAnchor, bottom: bottomAnchor, padding: .init(top: 4, left: 0, bottom: 8, right: 0))
+        descriptionLabel.anchor(top: subtitleLabel.bottomAnchor, leading: subtitleLabel.leadingAnchor, trailing: subtitleLabel.trailingAnchor, bottom: nil, padding: .init(top: 4, left: 0, bottom: 8, right: 0))
+        buttonsStack.anchor(top: descriptionLabel.bottomAnchor, leading: descriptionLabel.leadingAnchor, trailing: descriptionLabel.trailingAnchor, bottom: bottomAnchor, padding: .init(top: 16, left: 0, bottom: 16, right: 0))
     }
     
 }

@@ -22,6 +22,7 @@ final class FeedViewController: UIViewController {
     override func loadView() {
         guard let viewModel = viewModel else { return }
         rootView = FeedRootView(viewModel: viewModel)
+        rootView?.delegate = self
         view = rootView
     }
     
@@ -33,5 +34,16 @@ final class FeedViewController: UIViewController {
     
     @objc private func composeTweet() {
         navCoordinator?.goToComposeTweetVC()
+    }
+}
+
+extension FeedViewController: FeedRootViewDelegate {
+    
+    func didTapShareTweet(withText text: String) {
+        navCoordinator?.presentShareViewController(withText: text)
+    }
+    
+    func didSelect(_ tweet: TweetViewModel) {
+        navCoordinator?.goToTweetDetailVC(withTweet: tweet)
     }
 }

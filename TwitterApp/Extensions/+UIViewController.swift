@@ -14,5 +14,6 @@ extension UIViewController {
         case feed = "feedVC"
         case search = "searchVC"
         case composeVC = "composeVC"
+        case tweetDetail = "detailsVC"
     }
 }

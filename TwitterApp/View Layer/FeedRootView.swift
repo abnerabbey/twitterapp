@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol FeedRootViewDelegate: class {
+    func didSelect(_ tweet: TweetViewModel)
+    func didTapShareTweet(withText text: String)
+}
+
 final class FeedRootView: UIView, FetchableImage {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
@@ -17,6 +22,7 @@ final class FeedRootView: UIView, FetchableImage {
     }()
     
     var viewModel: FeedViewModelInterface
+    weak var delegate: FeedRootViewDelegate?
     
     init(frame: CGRect = .zero, viewModel: FeedViewModelInterface) {
         self.viewModel = viewModel
@@ -25,7 +31,7 @@ final class FeedRootView: UIView, FetchableImage {
         activateConstraints()
         setupUI()
         bindViewModel()
-//        viewModel.fetchTimeLine()
+        viewModel.fetchTimeLine()
     }
 }
 
@@ -40,6 +46,7 @@ extension FeedRootView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? TweetCell else { fatalError("Invalid Feed Cell") }
         let vm = viewModel[indexPath.row]
         cell.configure(with: vm)
+        cell.shareTapped.bind { [weak self] text in self?.delegate?.didTapShareTweet(withText: text) }
         fetchImage(from: vm.user.profileImageURL) { data in
             DispatchQueue.main.async {
                 guard let data = data else { return }
@@ -47,6 +54,11 @@ extension FeedRootView: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelect(viewModel[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

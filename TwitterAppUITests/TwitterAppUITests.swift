@@ -7,37 +7,75 @@
 //
 
 import XCTest
+@testable import TwitterApp
 
 class TwitterAppUITests: XCTestCase {
+    
+    var app: XCUIApplication!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    override func setUp() {
+        super.setUp()
+        app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    override func tearDown() {
+        app = nil
+        super.tearDown()
+    }
+    
+    func testTextViewEmpty() {
+        app.navigationBars["WizeTweet"].buttons["Add"].tap()
+        let textView = app.textViews["textView"]
+        
+        XCTAssertEqual(textView.label, "")
+    }
+    
+    func testCounterLabelInitalValue() {
+        app.navigationBars["WizeTweet"].buttons["Add"].tap()
+        
+        let counterLabel = app.staticTexts["counterLabel"]
+        
+        XCTAssertEqual(counterLabel.label, "Characters remaining: 140")
+    }
+    
+    func testLimitCharactersCounterLabel() {
+        
+        app.navigationBars["WizeTweet"].buttons["Add"].tap()
+        let textView = app.textViews["textView"]
+        textView.typeText("sdaSDJKAJDJSADH ASDOIADJAOSI AOID OQIWE. AS asdalskdasdasidjoicnas aspdopvoksdovksdov asdasodasdjosaijdosiajdasi asoidjasoidjsiisiaosidj dji")
+        
+        let counterLabel = app.staticTexts["counterLabel"]
+        
+        XCTAssertEqual(counterLabel.label, "Characters remaining: 0")
+    }
+    
+    func testTextCounterLabelMoreThanCharsLimit() {
+        
+        let test = "sdaSDJKAJDJSADH ASDOIADJAOSI AOID OQIWE. AS asdalskdasdasidjoicnas aspdopvoksdovksdov asdasodasdjosaijdosiajdasi asoidjasoidjsiisiaosidj dij"
+        XCTAssert(test.count == 140)
+        
+        app.navigationBars["WizeTweet"].buttons["Add"].tap()
+        let textView = app.textViews["textView"]
+        textView.typeText(test + "Esta cadena es para prueba. No tiene que aparecer en el textview y el counter label tiene que permancer en cero")
+        
+        let counterLabel = app.staticTexts["counterLabel"]
+        
+        XCTAssertEqual(counterLabel.label, "Characters remaining: 0")
+        
+    }
+    
+    func testTextMoreThanLimitCharacters() {
+        let test = "sdaSDJKAJDJSADH ASDOIADJAOSI AOID OQIWE. AS asdalskdasdasidjoicnas aspdopvoksdovksdov asdasodasdjosaijdosiajdasi asoidjasoidjsiisiaosidj dji"
+        XCTAssertEqual(test.count, 140)
+        
+        app.navigationBars["WizeTweet"].buttons["Add"].tap()
+        let textView = app.textViews["textView"]
+        textView.typeText(test + "Hola esta cadena es más larga de los 140 y no aparecerá finalmente")
+        
+        let text = (textView.value as? String) ?? ""
+        
+        
+        XCTAssertEqual(text, test)
     }
 }

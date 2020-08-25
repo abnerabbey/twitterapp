@@ -23,3 +23,7 @@ protocol SearchVCFactory {
 protocol ComposeVCFactory {
     func makeComposeViewController() -> ComposeViewController
 }
+
+protocol TweetVCFactory {
+    func makeTweetViewController() -> TweetDetailViewController
+}

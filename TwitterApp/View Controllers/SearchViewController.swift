@@ -16,10 +16,11 @@ final class SearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.delegate = rootView
         searchController.searchResultsUpdater = rootView
+        searchController.searchBar.keyboardType = .webSearch
         return searchController
     }()
     
-    var navCoordinator: Coordinator?
+    var navCoordinator: NavCoordinator?
     var viewModel: SearchViewModel?
     var rootView: FeedRootView?
 
@@ -31,12 +32,25 @@ final class SearchViewController: UIViewController {
     override func loadView() {
         guard let viewModel = viewModel else { return }
         rootView = FeedRootView(viewModel: viewModel)
+        rootView?.delegate = self
         view = rootView
     }
     
     private func setupUI() {
         title = "Search by #"
         navigationItem.searchController = searchController
+    }
+    
+}
+
+extension SearchViewController: FeedRootViewDelegate {
+    
+    func didTapShareTweet(withText text: String) {
+        navCoordinator?.presentShareViewController(withText: text)
+    }
+    
+    func didSelect(_ tweet: TweetViewModel) {
+        navCoordinator?.goToTweetDetailVC(withTweet: tweet)
     }
     
 }

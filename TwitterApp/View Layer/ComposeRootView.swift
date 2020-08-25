@@ -17,6 +17,7 @@ class ComposeRootView: UIView {
     
     let textView: UITextView = {
         let textView = UITextView()
+        textView.accessibilityIdentifier = "textView"
         return textView
     }()
     
@@ -34,6 +35,7 @@ class ComposeRootView: UIView {
     
     let counterLabel: UILabel = {
         let label = UILabel()
+        label.accessibilityIdentifier = "counterLabel"
         label.text = "Characters remaining: "
         label.font = UIFont(name: "Helvetica", size: 11)
         label.textColor = .systemGray
@@ -100,8 +102,9 @@ extension ComposeRootView: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let charsRemaining = viewModel.charactersRemaining(text: textView.text, range: range, inputText: text)
+        guard charsRemaining <= 140 else { return false }
         counterLabel.text = "Characters remaining: \(140 - charsRemaining)"
-        return charsRemaining < 140
+        return true
     }
 }
 

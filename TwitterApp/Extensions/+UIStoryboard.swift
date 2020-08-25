@@ -13,5 +13,6 @@ extension UIStoryboard {
     enum Name: String {
         case main = "Main"
         case compose = "Compose"
+        case detail = "Detail"
     }
 }

@@ -13,6 +13,8 @@ protocol TweetViewModelable {
     var text: String { get }
     var creation: String { get }
     var user: UserViewModelable { get }
+    var favs: Int { get }
+    var retweets: Int { get }
     
 }
 
@@ -28,6 +30,14 @@ struct TweetViewModel: TweetViewModelable {
     
     var user: UserViewModelable {
         return UserViewModel(user: tweet.user)
+    }
+    
+    var favs: Int {
+        return tweet.favs
+    }
+    
+    var retweets: Int {
+        return tweet.retweets
     }
     
     private let tweet: Tweet

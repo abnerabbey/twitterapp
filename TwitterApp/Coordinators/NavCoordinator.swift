@@ -38,4 +38,16 @@ extension NavCoordinator {
         presenter.present(nv, animated: true, completion: nil)
     }
     
+    func goToTweetDetailVC(withTweet tweet: TweetViewModel) {
+        let factory = ObjectFactories()
+        let tweetVC = factory.makeTweetViewController()
+        tweetVC.viewModel = tweet
+        tweetVC.navCoordinator = self
+        presenter.pushViewController(tweetVC, animated: true)
+    }
+    
+    func presentShareViewController(withText text: String) {
+        let composeVC = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        presenter.present(composeVC, animated: true, completion: nil)
+    }
 }

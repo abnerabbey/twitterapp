@@ -14,7 +14,7 @@ class ObjectFactories: Storyboarded {
 }
 
 // MARK: - View Controllers Factories
-extension ObjectFactories: FeedVCFactory, SearchVCFactory, ComposeVCFactory { }
+extension ObjectFactories: FeedVCFactory, SearchVCFactory, ComposeVCFactory, TweetVCFactory { }
 
 extension ObjectFactories {
     
@@ -36,6 +36,12 @@ extension ObjectFactories {
         guard let composeViewController = instantiateViewController(withIdentifier: .composeVC, withStoryboardName: .compose) as? ComposeViewController else { fatalError("Invalid Compose View Controller Creation") }
         composeViewController.viewModel = ComposeViewModel()
         return composeViewController
+    }
+    
+    func makeTweetViewController() -> TweetDetailViewController {
+        guard let tweetViewController = instantiateViewController(withIdentifier: .tweetDetail, withStoryboardName: .detail) as? TweetDetailViewController else { fatalError("Invalid Tweet Detail View Controller") }
+        
+        return tweetViewController
     }
     
 }

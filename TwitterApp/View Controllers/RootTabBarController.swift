@@ -23,7 +23,7 @@ final class RootTabBarController: UITabBarController {
         
         searchViewController = searchVCFactory.makeSearchViewController()
         let searchCoordinator = factory.makeNavCoordinator(with: searchViewController)
-        searchViewController.navCoordinator = searchCoordinator
+        searchViewController.navCoordinator = searchCoordinator as? NavCoordinator
         
         super.init(nibName: nil, bundle: nil)
         
