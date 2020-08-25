@@ -25,7 +25,7 @@ struct TweetViewModel: TweetViewModelable {
     }
     
     var creation: String {
-        return tweet.creation
+        return tweet.creation.replacingOccurrences(of: " +0000", with: "")
     }
     
     var user: UserViewModelable {
