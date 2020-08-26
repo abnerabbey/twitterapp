@@ -10,6 +10,14 @@ import UIKit
 
 final class TweetDetailViewController: UIViewController {
     
+    private let scrollView: UIScrollView = {
+        return UIScrollView()
+    }()
+    
+    private let contentView: UIView = {
+        return UIView()
+    }()
+    
     weak var navCoordinator: NavCoordinator?
     var viewModel: TweetViewModel?
     var rootView: TweetDetail?

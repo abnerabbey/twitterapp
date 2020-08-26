@@ -54,6 +54,7 @@ extension NavCoordinator {
     func goToProfileVC() {
         let factory = ObjectFactories()
         let profileVC = factory.makeProfileViewController()
-        presenter.present(profileVC, animated: true, completion: nil)
+        let nv = UINavigationController(rootViewController: profileVC)
+        presenter.present(nv, animated: true, completion: nil)
     }
 }

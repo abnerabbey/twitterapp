@@ -46,7 +46,7 @@ extension ObjectFactories {
     
     func makeProfileViewController() -> DeetailUserViewController {
         guard let profileViewController = instantiateViewController(withIdentifier: .detailUser, withStoryboardName: .detail) as? DeetailUserViewController else { fatalError("Invalid Tweet Detail View Controller") }
-        
+        profileViewController.viewModel = .init(fetcher: AnyFetcher(fetcher: FetcherImplementation()))
         return profileViewController
     }
     

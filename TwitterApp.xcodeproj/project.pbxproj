@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		072E233724F6B6A1008DBD62 /* DeetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233624F6B6A1008DBD62 /* DeetailUserViewController.swift */; };
+		072E233924F6C04B008DBD62 /* DetailUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233824F6C04B008DBD62 /* DetailUserViewModel.swift */; };
+		072E233B24F6C157008DBD62 /* DetailUserViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233A24F6C157008DBD62 /* DetailUserViewModelInterface.swift */; };
+		072E233D24F6C863008DBD62 /* UserRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233C24F6C863008DBD62 /* UserRootView.swift */; };
+		072E233F24F6E6D4008DBD62 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233E24F6E6D4008DBD62 /* ViewFactory.swift */; };
 		072E51C524EC375200135422 /* ViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C424EC375200135422 /* ViewModelMockTests.swift */; };
 		072E51C724EC377900135422 /* ViewModelSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C624EC377900135422 /* ViewModelSlowTests.swift */; };
 		072E51C924EC53B000135422 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C824EC53B000135422 /* SearchViewModel.swift */; };
@@ -88,6 +92,10 @@
 
 /* Begin PBXFileReference section */
 		072E233624F6B6A1008DBD62 /* DeetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeetailUserViewController.swift; sourceTree = "<group>"; };
+		072E233824F6C04B008DBD62 /* DetailUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewModel.swift; sourceTree = "<group>"; };
+		072E233A24F6C157008DBD62 /* DetailUserViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewModelInterface.swift; sourceTree = "<group>"; };
+		072E233C24F6C863008DBD62 /* UserRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRootView.swift; sourceTree = "<group>"; };
+		072E233E24F6E6D4008DBD62 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		072E51C424EC375200135422 /* ViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMockTests.swift; sourceTree = "<group>"; };
 		072E51C624EC377900135422 /* ViewModelSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSlowTests.swift; sourceTree = "<group>"; };
 		072E51C824EC53B000135422 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -268,6 +276,7 @@
 				0791B43924F43D8800643BE5 /* CollectionViewDataSource.swift */,
 				0773131724F567F900E0A230 /* TweetDetail.swift */,
 				0773131924F5680A00E0A230 /* TweetDetail.xib */,
+				072E233C24F6C863008DBD62 /* UserRootView.swift */,
 			);
 			path = "View Layer";
 			sourceTree = "<group>";
@@ -284,6 +293,8 @@
 				072E51C824EC53B000135422 /* SearchViewModel.swift */,
 				076F350024F2E3D20054B055 /* ComposeViewModel.swift */,
 				076F350224F2E5AF0054B055 /* ComposeViewModelInterface.swift */,
+				072E233824F6C04B008DBD62 /* DetailUserViewModel.swift */,
+				072E233A24F6C157008DBD62 /* DetailUserViewModelInterface.swift */,
 			);
 			path = "View Model Layer";
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 				073FFDC224E7434E00C3461C /* Bindable.swift */,
 				073FFDC424E7442100C3461C /* Binder.swift */,
 				0779625224EB5C0600F12E7B /* FetchableImage.swift */,
+				072E233E24F6E6D4008DBD62 /* ViewFactory.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -578,6 +590,7 @@
 				073FFDC724E7459500C3461C /* FeedViewModel.swift in Sources */,
 				0773131824F567F900E0A230 /* TweetDetail.swift in Sources */,
 				073FFD5924E6F74400C3461C /* SceneDelegate.swift in Sources */,
+				072E233D24F6C863008DBD62 /* UserRootView.swift in Sources */,
 				073FFDC124E73BD500C3461C /* APIErrors.swift in Sources */,
 				076F34FB24F2C3F70054B055 /* ComposeViewController.swift in Sources */,
 				0791B43424F41CBE00643BE5 /* +PHPhotosLibrary.swift in Sources */,
@@ -586,8 +599,11 @@
 				073FFDC324E7434E00C3461C /* Bindable.swift in Sources */,
 				073FFD9F24E706BD00C3461C /* ViewControllerFactories.swift in Sources */,
 				073FFDAB24E7192200C3461C /* NavCoordinator.swift in Sources */,
+				072E233924F6C04B008DBD62 /* DetailUserViewModel.swift in Sources */,
 				073FFDCD24E74B7E00C3461C /* +UIColor.swift in Sources */,
+				072E233B24F6C157008DBD62 /* DetailUserViewModelInterface.swift in Sources */,
 				073FFDBD24E7387B00C3461C /* Endpoint.swift in Sources */,
+				072E233F24F6E6D4008DBD62 /* ViewFactory.swift in Sources */,
 				076F34FD24F2C4B70054B055 /* ComposeRootView.swift in Sources */,
 				073FFDB724E734CE00C3461C /* User.swift in Sources */,
 			);
