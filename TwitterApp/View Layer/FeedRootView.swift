@@ -18,6 +18,7 @@ final class FeedRootView: UIView, FetchableImage {
     
     private let tableView: UITableView = {
        let table = UITableView()
+        table.alpha = 0
         return table
     }()
     
@@ -27,6 +28,7 @@ final class FeedRootView: UIView, FetchableImage {
     init(frame: CGRect = .zero, viewModel: FeedViewModelInterface) {
         self.viewModel = viewModel
         super.init(frame: frame)
+        backgroundColor = .white
         constructHierarchy()
         activateConstraints()
         setupUI()
@@ -111,10 +113,17 @@ extension FeedRootView {
             switch state {
             case .success:
                 self.tableView.reloadData()
+                UIView.animate(withDuration: 0.5) {
+                    self.tableView.alpha = 1
+                }
+                self.hideHud()
             case .error:
+                self.hideHud()
                 print("there's an error")
-            default:
-                break
+            case .fetching:
+                if self.viewModel.flow == .feed {
+                    self.showHud()
+                }
             }
         }
     }

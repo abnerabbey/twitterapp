@@ -10,6 +10,7 @@ import Foundation
 
 protocol FeedViewModelInterface {
     var state: Binder<State> { get set }
+    var flow: Flow { get }
     subscript(index: Int) -> TweetViewModel { get }
     var tweetsCount: Int { get }
     func fetchTimeLine()

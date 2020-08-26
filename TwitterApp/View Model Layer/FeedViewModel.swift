@@ -37,6 +37,10 @@ class FeedViewModel {
 
 extension FeedViewModel: FeedViewModelInterface {
     
+    var flow: Flow {
+        return .feed
+    }
+    
     subscript(index: Int) -> TweetViewModel {
         get {
             return tweets.value![index]

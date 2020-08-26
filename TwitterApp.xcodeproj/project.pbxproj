@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -57,6 +57,9 @@
 		0773131A24F5680A00E0A230 /* TweetDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0773131924F5680A00E0A230 /* TweetDetail.xib */; };
 		0773131C24F56C5300E0A230 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0773131B24F56C5300E0A230 /* Detail.storyboard */; };
 		0773131E24F5761C00E0A230 /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773131D24F5761C00E0A230 /* TweetDetailViewController.swift */; };
+		0773132124F5D42A00E0A230 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0773132024F5D42A00E0A230 /* Lottie */; };
+		0773132624F5DD9A00E0A230 /* loadtwitter.json in Resources */ = {isa = PBXBuildFile; fileRef = 0773132524F5DD9A00E0A230 /* loadtwitter.json */; };
+		0773132824F5E09F00E0A230 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773132724F5E09F00E0A230 /* Flow.swift */; };
 		0779624F24EAE45B00F12E7B /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779624E24EAE45B00F12E7B /* MockFetcher.swift */; };
 		0779625324EB5C0600F12E7B /* FetchableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779625224EB5C0600F12E7B /* FetchableImage.swift */; };
 		0791B43424F41CBE00643BE5 /* +PHPhotosLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791B43324F41CBE00643BE5 /* +PHPhotosLibrary.swift */; };
@@ -139,6 +142,8 @@
 		0773131924F5680A00E0A230 /* TweetDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetDetail.xib; sourceTree = "<group>"; };
 		0773131B24F56C5300E0A230 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		0773131D24F5761C00E0A230 /* TweetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailViewController.swift; sourceTree = "<group>"; };
+		0773132524F5DD9A00E0A230 /* loadtwitter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadtwitter.json; sourceTree = "<group>"; };
+		0773132724F5E09F00E0A230 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		0779624E24EAE45B00F12E7B /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
 		0779625224EB5C0600F12E7B /* FetchableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchableImage.swift; sourceTree = "<group>"; };
 		0791B43324F41CBE00643BE5 /* +PHPhotosLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+PHPhotosLibrary.swift"; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0773132124F5D42A00E0A230 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +203,7 @@
 			children = (
 				073FFD5824E6F74400C3461C /* SceneDelegate.swift */,
 				073FFD5624E6F74400C3461C /* AppDelegate.swift */,
+				0773132224F5D43200E0A230 /* LottieFiles */,
 				073FFD8A24E6FA6800C3461C /* Utils */,
 				073FFD8924E6FA5600C3461C /* Extensions */,
 				073FFD8C24E6FBF400C3461C /* Coordinators */,
@@ -268,6 +275,7 @@
 				073FFDC824E7484D00C3461C /* TweetViewModel.swift */,
 				073FFDCA24E7492700C3461C /* UserViewModel.swift */,
 				073FFDCE24E74EEB00C3461C /* State.swift */,
+				0773132724F5E09F00E0A230 /* Flow.swift */,
 				072E51CA24EC53DD00135422 /* FeedViewModelInterface.swift */,
 				073FFDC624E7459500C3461C /* FeedViewModel.swift */,
 				072E51C824EC53B000135422 /* SearchViewModel.swift */,
@@ -368,6 +376,14 @@
 			path = SearchTests;
 			sourceTree = "<group>";
 		};
+		0773132224F5D43200E0A230 /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0773132524F5DD9A00E0A230 /* loadtwitter.json */,
+			);
+			path = LottieFiles;
+			sourceTree = "<group>";
+		};
 		0779624D24EAE44600F12E7B /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +416,9 @@
 			dependencies = (
 			);
 			name = TwitterApp;
+			packageProductDependencies = (
+				0773132024F5D42A00E0A230 /* Lottie */,
+			);
 			productName = TwitterApp;
 			productReference = 073FFD5324E6F74400C3461C /* TwitterApp.app */;
 			productType = "com.apple.product-type.application";
@@ -472,6 +491,9 @@
 				Base,
 			);
 			mainGroup = 073FFD4A24E6F74400C3461C;
+			packageReferences = (
+				0773131F24F5D42A00E0A230 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 073FFD5424E6F74400C3461C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -491,6 +513,7 @@
 				073FFD6324E6F74500C3461C /* LaunchScreen.storyboard in Resources */,
 				073FFD6024E6F74500C3461C /* Assets.xcassets in Resources */,
 				073FFD5E24E6F74400C3461C /* Main.storyboard in Resources */,
+				0773132624F5DD9A00E0A230 /* loadtwitter.json in Resources */,
 				076F34F924F2C37D0054B055 /* Compose.storyboard in Resources */,
 				0773131A24F5680A00E0A230 /* TweetDetail.xib in Resources */,
 				0773131C24F56C5300E0A230 /* Detail.storyboard in Resources */,
@@ -524,6 +547,7 @@
 				073FFD9824E6FFD400C3461C /* +UIStoryboard.swift in Sources */,
 				073FFDA124E70A2800C3461C /* RootTabBarController.swift in Sources */,
 				073FFDC524E7442100C3461C /* Binder.swift in Sources */,
+				0773132824F5E09F00E0A230 /* Flow.swift in Sources */,
 				073FFD9D24E7037400C3461C /* ObjectFactories.swift in Sources */,
 				073FFDAF24E72FBE00C3461C /* TweetCell.swift in Sources */,
 				073FFD9424E6FF1400C3461C /* SearchViewController.swift in Sources */,
@@ -888,6 +912,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0773131F24F5D42A00E0A230 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0773132024F5D42A00E0A230 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0773131F24F5D42A00E0A230 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 073FFD4B24E6F74400C3461C /* Project object */;
 }

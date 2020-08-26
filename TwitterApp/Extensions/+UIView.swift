@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 extension UIView {
     
@@ -60,6 +61,30 @@ extension UIView {
         
         if size.height != 0 {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
+    }
+    
+}
+
+extension UIView {
+    
+    func showHud() {
+        let animationView = AnimationView.init(name: "loadtwitter")
+        animationView.backgroundColor = .white
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        addSubview(animationView)
+        animationView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
+        animationView.play()
+    }
+    
+    func hideHud() {
+        if let view = (subviews.first { $0 is AnimationView }) {
+            UIView.animate(withDuration: 0.3, animations: {
+                view.alpha = 0
+            }) { granted in
+               view.removeFromSuperview()
+            }
         }
     }
     

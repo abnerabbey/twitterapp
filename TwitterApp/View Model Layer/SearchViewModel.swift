@@ -36,6 +36,10 @@ final class SearchViewModel {
 
 extension SearchViewModel: FeedViewModelInterface {
     
+    var flow: Flow {
+        return .search
+    }
+    
     subscript(index: Int) -> TweetViewModel {
         get {
             return tweets.value![index]
