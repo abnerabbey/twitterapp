@@ -18,6 +18,7 @@ extension UIImage {
         case ret
         case comment
         case share
+        case profile
     }
     
     convenience init!(assetIdenfier identifier: AssetIdentifier) {

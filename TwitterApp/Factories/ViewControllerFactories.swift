@@ -27,3 +27,7 @@ protocol ComposeVCFactory {
 protocol TweetVCFactory {
     func makeTweetViewController() -> TweetDetailViewController
 }
+
+protocol ProfileVCFactory {
+    func makeProfileViewController() -> DeetailUserViewController
+}

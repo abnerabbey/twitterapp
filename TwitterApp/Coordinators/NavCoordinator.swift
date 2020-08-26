@@ -50,4 +50,10 @@ extension NavCoordinator {
         let composeVC = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         presenter.present(composeVC, animated: true, completion: nil)
     }
+    
+    func goToProfileVC() {
+        let factory = ObjectFactories()
+        let profileVC = factory.makeProfileViewController()
+        presenter.present(profileVC, animated: true, completion: nil)
+    }
 }

@@ -30,10 +30,16 @@ final class FeedViewController: UIViewController {
         title = "WizeTweet"
         let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(composeTweet))
         navigationItem.rightBarButtonItem = rightButton
+        let leftButton = UIBarButtonItem(image: .init(assetIdenfier: .profile), style: .plain, target: self, action: #selector(goToProfile))
+        navigationItem.leftBarButtonItem = leftButton
     }
     
     @objc private func composeTweet() {
         navCoordinator?.goToComposeTweetVC()
+    }
+    
+    @objc private func goToProfile() {
+        navCoordinator?.goToProfileVC()
     }
 }
 

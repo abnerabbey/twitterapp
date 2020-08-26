@@ -22,5 +22,20 @@
             </objects>
             <point key="canvasLocation" x="-299" y="80"/>
         </scene>
+        <!--Deetail User View Controller-->
+        <scene sceneID="JJs-N8-2Dz">
+            <objects>
+                <viewController storyboardIdentifier="DetailUserVC" id="gE7-2l-nNc" customClass="DeetailUserViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mbO-bS-ZIy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cQc-Bw-jO7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZM-Qd-Ixf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="428" y="80"/>
+        </scene>
     </scenes>
 </document>

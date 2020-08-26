@@ -20,6 +20,16 @@ final class TweetDetailViewController: UIViewController {
         bindView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = viewModel?.user.backgroundColor
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.barTintColor = .redMain
+    }
+    
     override func loadView() {
         guard let viewModel = viewModel else { return }
         rootView = TweetDetail(viewModel: viewModel)

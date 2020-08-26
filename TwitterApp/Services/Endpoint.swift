@@ -27,9 +27,9 @@ extension Endpoint {
         case .search(let string):
             guard let url = URL(string: Endpoint.baseURL + "/api/search/\(string)") else { fatalError("Invalid URL") }
             return URLRequest(url: url)
-        default:
-            fatalError("Not implemented")
-            break
+        case .user:
+            guard let url = URL(string: Endpoint.baseURL + "/api/user") else { fatalError("Invalid URL") }
+            return URLRequest(url: url)
         }
     }
 }

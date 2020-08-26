@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072E233724F6B6A1008DBD62 /* DeetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E233624F6B6A1008DBD62 /* DeetailUserViewController.swift */; };
 		072E51C524EC375200135422 /* ViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C424EC375200135422 /* ViewModelMockTests.swift */; };
 		072E51C724EC377900135422 /* ViewModelSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C624EC377900135422 /* ViewModelSlowTests.swift */; };
 		072E51C924EC53B000135422 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E51C824EC53B000135422 /* SearchViewModel.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072E233624F6B6A1008DBD62 /* DeetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeetailUserViewController.swift; sourceTree = "<group>"; };
 		072E51C424EC375200135422 /* ViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMockTests.swift; sourceTree = "<group>"; };
 		072E51C624EC377900135422 /* ViewModelSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSlowTests.swift; sourceTree = "<group>"; };
 		072E51C824EC53B000135422 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				073FFD9324E6FF1400C3461C /* SearchViewController.swift */,
 				076F34FA24F2C3F70054B055 /* ComposeViewController.swift */,
 				0773131D24F5761C00E0A230 /* TweetDetailViewController.swift */,
+				072E233624F6B6A1008DBD62 /* DeetailUserViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				073FFDA924E7171500C3461C /* CoordinatorFactories.swift in Sources */,
 				073FFD9224E6FEED00C3461C /* FeedViewController.swift in Sources */,
 				073FFDBF24E73B7F00C3461C /* FetcherImplementation.swift in Sources */,
+				072E233724F6B6A1008DBD62 /* DeetailUserViewController.swift in Sources */,
 				072E51CD24EC5EFE00135422 /* SearchResult.swift in Sources */,
 				073FFDBB24E7387100C3461C /* Fetcher.swift in Sources */,
 				073FFDC724E7459500C3461C /* FeedViewModel.swift in Sources */,

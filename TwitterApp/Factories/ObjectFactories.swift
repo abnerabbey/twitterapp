@@ -14,7 +14,7 @@ class ObjectFactories: Storyboarded {
 }
 
 // MARK: - View Controllers Factories
-extension ObjectFactories: FeedVCFactory, SearchVCFactory, ComposeVCFactory, TweetVCFactory { }
+extension ObjectFactories: FeedVCFactory, SearchVCFactory, ComposeVCFactory, TweetVCFactory, ProfileVCFactory { }
 
 extension ObjectFactories {
     
@@ -42,6 +42,12 @@ extension ObjectFactories {
         guard let tweetViewController = instantiateViewController(withIdentifier: .tweetDetail, withStoryboardName: .detail) as? TweetDetailViewController else { fatalError("Invalid Tweet Detail View Controller") }
         
         return tweetViewController
+    }
+    
+    func makeProfileViewController() -> DeetailUserViewController {
+        guard let profileViewController = instantiateViewController(withIdentifier: .detailUser, withStoryboardName: .detail) as? DeetailUserViewController else { fatalError("Invalid Tweet Detail View Controller") }
+        
+        return profileViewController
     }
     
 }
