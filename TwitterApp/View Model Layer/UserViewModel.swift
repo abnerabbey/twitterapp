@@ -43,7 +43,7 @@ struct UserViewModel: UserViewModelable {
     }
     
     var creation: String {
-        return user.creation
+        return user.creation.replacingOccurrences(of: " +0000", with: "")
     }
     
     var backgroundColor: UIColor {
@@ -56,7 +56,7 @@ struct UserViewModel: UserViewModelable {
     }
     
     var coverImageURL: String {
-        guard let stringURL = user.profileImageURL else { return "" }
+        guard let stringURL = user.coverImageURL else { return "" }
         return stringURL
     }
     
