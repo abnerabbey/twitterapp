@@ -12,6 +12,7 @@ class DetailUserViewModel {
     
     let fetcher: AnyFetcher<User>
     var user = Binder<UserViewModel>()
+    var state = Binder<State>()
     
     init(fetcher: AnyFetcher<User>) {
         self.fetcher = fetcher
@@ -21,12 +22,14 @@ class DetailUserViewModel {
 extension DetailUserViewModel: DetailUserViewModelInterface {
     
     func requestUser() {
+        state.value = .fetching
         fetcher.request(.user) { [weak self] result in
             switch result {
             case .success(let user):
+                self?.state.value = .success
                 self?.user.value = UserViewModel(user: user)
             case .failure(let error):
-                print("There was an error while fetching user: \(error)")
+                self?.state.value = .error
             }
         }
     }

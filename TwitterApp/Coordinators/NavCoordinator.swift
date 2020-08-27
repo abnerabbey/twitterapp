@@ -58,3 +58,12 @@ extension NavCoordinator {
         presenter.present(nv, animated: true, completion: nil)
     }
 }
+
+// MARK: - Alerts Methods
+extension NavCoordinator {
+    
+    func presentAlert(withMessage message: String) {
+        presenter.showAlert(withMessage: message)
+    }
+    
+}

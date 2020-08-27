@@ -200,6 +200,15 @@ extension DeetailUserViewController: FetchableImage {
                 }
             })
         }
+        
+        viewModel?.state.bind { [weak self] state in
+            switch state {
+            case .error:
+                self?.showAlert(withMessage: "An error ocurred")
+            default:
+                break
+            }
+        }
     }
     
 }

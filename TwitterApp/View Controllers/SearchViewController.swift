@@ -53,4 +53,7 @@ extension SearchViewController: FeedRootViewDelegate {
         navCoordinator?.goToTweetDetailVC(withTweet: tweet)
     }
     
+    func didFail(withError error: String) {
+        navCoordinator?.presentAlert(withMessage: error)
+    }
 }

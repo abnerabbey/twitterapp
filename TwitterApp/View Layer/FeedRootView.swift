@@ -11,6 +11,7 @@ import UIKit
 protocol FeedRootViewDelegate: class {
     func didSelect(_ tweet: TweetViewModel)
     func didTapShareTweet(withText text: String)
+    func didFail(withError error: String)
 }
 
 final class FeedRootView: UIView, FetchableImage {
@@ -119,7 +120,7 @@ extension FeedRootView {
                 self.hideHud()
             case .error:
                 self.hideHud()
-                print("there's an error")
+                self.delegate?.didFail(withError: "There was an error. Try it latter")
             case .fetching:
                 if self.viewModel.flow == .feed {
                     self.showHud()

@@ -10,5 +10,6 @@ import Foundation
 
 protocol DetailUserViewModelInterface {
     var user: Binder<UserViewModel> { get set }
+    var state: Binder<State> { get set }
     func requestUser()
 }

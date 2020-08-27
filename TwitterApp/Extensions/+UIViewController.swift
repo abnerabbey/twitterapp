@@ -17,4 +17,10 @@ extension UIViewController {
         case tweetDetail = "detailsVC"
         case detailUser = "DetailUserVC"
     }
+    
+    func showAlert(withMessage message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(.init(title: "Ok", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }

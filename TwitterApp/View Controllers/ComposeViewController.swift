@@ -44,6 +44,15 @@ extension ComposeViewController {
             let icon = image.scaled(.init(width: 30, height: 30)).withRenderingMode(.alwaysOriginal)
             self?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: icon, style: .done, target: nil, action: nil)
         })
+        
+        viewModel?.state.bind { [weak self] state in
+            switch state {
+            case .fetching:
+                self?.view.showHud()
+            case .error, .success:
+                self?.view.hideHud()
+                self?.showAlert(withMessage: "An error ocurred")
+            }
+        }
     }
-    
 }
