@@ -176,7 +176,8 @@ extension DeetailUserViewController {
         descriptionLabel.text = user.description
         locationLabel.text = user.location
         creationLabel.text = user.creation
-        followersLabel.text = "0" + (followersLabel.text ?? "")
+        followersLabel.text = user.followers + (followersLabel.text ?? "")
+        followingLabel.text = "0" + (followingLabel.text ?? "")
         title = user.name
     }
 }

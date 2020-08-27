@@ -16,9 +16,12 @@ protocol ComposeViewModelInterface {
     
     var totalChars: Int { get }
     var photosGrant: Binder<Bool> { get set }
+    var status: String { get set }
+    var state: Binder<State> { get set }
     
     func charactersRemaining(text: String, range: NSRange, inputText: String) -> Int
     func requestPhotosAccess()
+    func publishTweet()
 }
 
 protocol ComposeViewModelPhotos {

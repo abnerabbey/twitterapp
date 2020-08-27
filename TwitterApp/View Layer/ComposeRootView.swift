@@ -103,6 +103,7 @@ extension ComposeRootView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let charsRemaining = viewModel.charactersRemaining(text: textView.text, range: range, inputText: text)
         guard charsRemaining <= 140 else { return false }
+        viewModel.status = textView.text
         counterLabel.text = "Characters remaining: \(140 - charsRemaining)"
         return true
     }
@@ -133,6 +134,11 @@ extension ComposeRootView {
         collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: "photosCell")
         collectionView.dataSource = dataSource
         collectionView.delegate = self
+        publishButton.addTarget(self, action: #selector(publishTweet), for: .touchUpInside)
+    }
+    
+    @objc private func publishTweet() {
+        viewModel.publishTweet()
     }
     
 }
@@ -142,12 +148,24 @@ extension ComposeRootView {
     
     private func viewModelBinds() {
         bindPhotoAccess()
+        bindPublishTweetState()
     }
     
     private func bindPhotoAccess() {
         viewModel.photosGrant.bind { [weak self] granted in
             if granted {
                 self?.collectionView.reloadData()
+            }
+        }
+    }
+    
+    private func bindPublishTweetState() {
+        viewModel.state.bind { [weak self] state in
+            switch state {
+            case .fetching:
+                self?.showHud()
+            case .error, .success:
+                self?.hideHud()
             }
         }
     }

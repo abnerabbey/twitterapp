@@ -21,10 +21,35 @@ final class ComposeViewModel: ComposeViewModelInterface {
     private lazy var photos = ComposeViewModel.loadPhotos()
     private lazy var imageManager = PHCachingImageManager()
     
+    let fetcher: AnyFetcher<PostTweetResponse>
+    
+    var status = String()
+    var state = Binder<State>()
+    
+    init(fetcher: AnyFetcher<PostTweetResponse>) {
+        self.fetcher = fetcher
+    }
+    
     func charactersRemaining(text: String, range: NSRange, inputText: String) -> Int {
         let newText = (text as NSString).replacingCharacters(in: range, with: inputText)
         let numberOfChars = newText.count
         return numberOfChars
+    }
+    
+    func publishTweet() {
+        state.value = .fetching
+        let tweet = PostTweet(status: status)
+        guard let data = try? JSONEncoder().encode(tweet) else { fatalError("Error encoding tweet") }
+        fetcher.request(.postTweet(data)) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.state.value = .success
+                print(response)
+            case .failure(let error):
+                self?.state.value = .error
+                print(error)
+            }
+        }
     }
 }
 

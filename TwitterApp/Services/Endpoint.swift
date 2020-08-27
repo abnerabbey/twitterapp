@@ -14,6 +14,7 @@ enum Endpoint {
     case timeline
     case user
     case search(String)
+    case postTweet(Data?)
 }
 
 extension Endpoint {
@@ -30,6 +31,13 @@ extension Endpoint {
         case .user:
             guard let url = URL(string: Endpoint.baseURL + "/api/user") else { fatalError("Invalid URL") }
             return URLRequest(url: url)
+        case .postTweet(let data):
+            guard let url = URL(string: Endpoint.baseURL + "/api/statuses/update") else { fatalError("Invalid URL") }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = data
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            return request
         }
     }
 }
