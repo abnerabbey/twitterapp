@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TweetCell: UITableViewCell {
+final class TweetCell: UITableViewCell, FetchableImage {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     let newImageView: UIImageView = {
@@ -94,6 +94,22 @@ final class TweetCell: UITableViewCell {
         subtitleLabel.text = vm.user.nickname
         descriptionLabel.text = vm.text
         shareButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+        fetchImage()
+    }
+    
+    private func fetchImage() {
+        guard let vm = viewModel else { return }
+        fetchImage(from: vm.user.profileImageURL) { [weak self] data in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                self?.newImageView.alpha = 0
+                self?.newImageView.image = image
+                UIView.animate(withDuration: 0.3) {
+                    self?.newImageView.alpha = 1
+                }
+            }
+        }
     }
     
     @objc func shareAction() {

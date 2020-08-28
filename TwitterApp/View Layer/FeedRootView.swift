@@ -14,7 +14,7 @@ protocol FeedRootViewDelegate: class {
     func didFail(withError error: String)
 }
 
-final class FeedRootView: UIView, FetchableImage {
+final class FeedRootView: UIView {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     private let tableView: UITableView = {
@@ -50,12 +50,6 @@ extension FeedRootView: UITableViewDelegate, UITableViewDataSource {
         let vm = viewModel[indexPath.row]
         cell.configure(with: vm)
         cell.shareTapped.bind { [weak self] text in self?.delegate?.didTapShareTweet(withText: text) }
-        fetchImage(from: vm.user.profileImageURL) { data in
-            DispatchQueue.main.async {
-                guard let data = data else { return }
-                cell.newImageView.image = UIImage(data: data)
-            }
-        }
         return cell
     }
     
