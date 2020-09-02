@@ -26,12 +26,17 @@ class TwitterAppTests: XCTestCase {
         super.tearDown()
     }
     
+    func testFlowIsFeed() {
+        let flowState = Flow.feed
+        XCTAssertEqual(sut.flow, flowState, "Flow state is not feed")
+    }
+    
     func testViewModelStateNotNil() {
         XCTAssertNotNil(sut.state)
     }
     
     func testViewModelTweetsVariableIsEmpty() {
-        XCTAssertEqual(sut.tweetsCount, 0, "Varaible that contains tweets is not empty")
+        XCTAssertEqual(sut.tweetsCount, 0, "Variable that contains tweets is not empty")
     }
     
     func testViewModelIsFetching() {

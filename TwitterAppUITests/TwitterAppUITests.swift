@@ -78,4 +78,5 @@ class TwitterAppUITests: XCTestCase {
         
         XCTAssertEqual(text, test)
     }
+    
 }

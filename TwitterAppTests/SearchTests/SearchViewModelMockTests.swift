@@ -1,15 +1,16 @@
 //
-//  SearchViewModelTests.swift
+//  SearchViewModelMockTests.swift
 //  TwitterAppTests
 //
-//  Created by Abner Castro on 23/08/20.
+//  Created by Abner Castro on 02/09/20.
 //  Copyright © 2020 Abner Castro. All rights reserved.
 //
 
+import Foundation
 import XCTest
 @testable import TwitterApp
 
-class SearchViewModelTests: XCTestCase {
+class SearchViewModelMockTests: XCTestCase {
 
     var sut: SearchViewModel!
     var mockAPIService: MockFetcher<SearchResult>!
@@ -24,6 +25,11 @@ class SearchViewModelTests: XCTestCase {
         sut = nil
         mockAPIService = nil
         super.tearDown()
+    }
+    
+    func testFlowIsSearch() {
+        let flowState = Flow.search
+        XCTAssertEqual(sut.flow, flowState, "Flow state is not searching")
     }
     
     func testTweetsArrayIsEmpty() {
