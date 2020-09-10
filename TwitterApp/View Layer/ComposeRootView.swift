@@ -15,33 +15,27 @@ class ComposeRootView: UIView {
     var viewModel: CVMInterface
     private var dataSource: CollectionViewDataSource<PhotosCell>
     
-    let textView: UITextView = {
-        let textView = UITextView()
-        textView.accessibilityIdentifier = "textView"
-        return textView
-    }()
+    let textView: UITextView = create {
+        $0.accessibilityIdentifier = "textView"
+    }
     
-    let publishButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Publish", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 14)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.systemGray, for: .disabled)
-        button.backgroundColor = .redMain
-        button.layer.cornerRadius = 5
-        button.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, size: .init(width: 60, height: 0))
-        return button
-    }()
+    let publishButton: UIButton = create {
+        $0.setTitle("Publish", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 14)
+        $0.setTitleColor(.white, for: .normal)
+        $0.setTitleColor(.systemGray, for: .disabled)
+        $0.backgroundColor = .redMain
+        $0.layer.cornerRadius = 5
+        $0.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, size: .init(width: 60, height: 0))
+    }
     
-    let counterLabel: UILabel = {
-        let label = UILabel()
-        label.accessibilityIdentifier = "counterLabel"
-        label.text = "Characters remaining: "
-        label.font = UIFont(name: "Helvetica", size: 11)
-        label.textColor = .systemGray
-        label.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, size: .init(width: 0, height: 30))
-        return label
-    }()
+    let counterLabel: UILabel = create {
+        $0.accessibilityIdentifier = "counterLabel"
+        $0.text = "Characters remaining: "
+        $0.font = UIFont(name: "Helvetica", size: 11)
+        $0.textColor = .systemGray
+        $0.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, size: .init(width: 0, height: 30))
+    }
     
     lazy var horizontalStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [counterLabel, publishButton])

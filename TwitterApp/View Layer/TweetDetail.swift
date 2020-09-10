@@ -28,52 +28,39 @@ final class TweetDetail: UIView, FetchableImage {
         return scroll
     }()
     
-    let contentView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
+    let contentView: UIView = create {
+        $0.backgroundColor = .white
+    }
     
-    let contentLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-light", size: 17)
-        label.numberOfLines = 0
-        label.textColor = .black
-        return label
-    }()
+    let contentLabel: UILabel = create {
+        $0.font = UIFont(name: "Helvetica-light", size: 17)
+        $0.numberOfLines = 0
+        $0.textColor = .black
+    }
     
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 11)
-        label.numberOfLines = 1
-        label.textColor = .systemGray
-        return label
-        
-    }()
+    let dateLabel: UILabel = create {
+        $0.font = UIFont(name: "Helvetica", size: 11)
+        $0.numberOfLines = 1
+        $0.textColor = .systemGray
+    }
     
-    let separationView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
+    let separationView: UIView = create {
+        $0.backgroundColor = .systemGray5
+    }
     
-    let favsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 12)
-        label.numberOfLines = 1
-        label.textColor = .systemGray
-        label.text = " Me gusta"
-        return label
-    }()
+    let favsLabel: UILabel = create {
+        $0.font = UIFont(name: "Helvetica", size: 12)
+        $0.numberOfLines = 1
+        $0.textColor = .systemGray
+        $0.text = " Me gusta"
+    }
     
-    let retsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 12)
-        label.numberOfLines = 1
-        label.textColor = .systemGray
-        label.text = " Retweets"
-        return label
-    }()
+    let retsLabel: UILabel = create {
+        $0.font = UIFont(name: "Helvetica", size: 12)
+        $0.numberOfLines = 1
+        $0.textColor = .systemGray
+        $0.text = " Retweets"
+    }
     
     private lazy var countStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [favsLabel, retsLabel])
@@ -82,11 +69,9 @@ final class TweetDetail: UIView, FetchableImage {
         return stack
     }()
     
-    let separationView2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
+    let separationView2: UIView = create {
+        $0.backgroundColor = .systemGray5
+    }
     
     let commentButton: UIButton = {
         let button = UIButton(type: .system)

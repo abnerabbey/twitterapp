@@ -17,11 +17,9 @@ protocol FeedRootViewDelegate: class {
 final class FeedRootView: UIView {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    private let tableView: UITableView = {
-       let table = UITableView()
-        table.alpha = 0
-        return table
-    }()
+    private let tableView: UITableView = create {
+        $0.alpha = 0
+    }
     
     var viewModel: FeedViewModelInterface
     weak var delegate: FeedRootViewDelegate?
