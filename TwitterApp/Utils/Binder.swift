@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Binder<T>: Bindable {
+/*struct Binder<T>: Bindable {
     
     typealias State = T
     
@@ -32,4 +32,4 @@ struct Binder<T>: Bindable {
     
     
     
-}
+}*/

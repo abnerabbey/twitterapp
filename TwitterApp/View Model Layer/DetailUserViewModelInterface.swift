@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol DetailUserViewModelInterface {
-    var user: Binder<UserViewModel> { get set }
-    var state: Binder<State> { get set }
+    var user: PublishSubject<UserViewModel> { get set }
+    var state: PublishSubject<State> { get set }
     func requestUser()
 }

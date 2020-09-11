@@ -7,27 +7,29 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class SearchViewModel {
     
     private let fetcher: AnyFetcher<SearchResult>
-    private var tweets = Binder<[TweetViewModel]>([])
+    private var tweets = BehaviorSubject<[TweetViewModel]>(value: [])
     
-    var state: Binder<State> = Binder(nil)
+    var state: PublishSubject<State> = PublishSubject()
     
     init(fetcher: AnyFetcher<SearchResult>) {
         self.fetcher = fetcher
     }
     
     func fetchByHashTag(_ string: String) {
-        state.value = .fetching
+        state.onNext(.fetching)
         fetcher.request(.search(string)) { [weak self] result in
             switch result {
             case .success(let searchResult):
-                self?.tweets.value = searchResult.tweets.map { TweetViewModel(tweet: $0) }
-                self?.state.value = .success
+                self?.tweets.onNext(searchResult.tweets.map { TweetViewModel(tweet: $0) })
+                self?.state.onNext(.success)
             case .failure(_):
-                self?.state.value = .error
+                self?.state.onNext(.error)
                 break
             }
         }
@@ -42,12 +44,20 @@ extension SearchViewModel: FeedViewModelInterface {
     
     subscript(index: Int) -> TweetViewModel {
         get {
-            return tweets.value![index]
+            do {
+                return try tweets.value()[index]
+            } catch {
+                fatalError("There was an error while trying to get value at index")
+            }
         }
     }
     
     var tweetsCount: Int {
-        return tweets.value!.count
+        do {
+            return try tweets.value().count
+        } catch {
+            return 0
+        }
     }
     
 }

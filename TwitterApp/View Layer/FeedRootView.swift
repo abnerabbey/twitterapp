@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol FeedRootViewDelegate: class {
     func didSelect(_ tweet: TweetViewModel)
@@ -23,6 +25,8 @@ final class FeedRootView: UIView {
     
     var viewModel: FeedViewModelInterface
     weak var delegate: FeedRootViewDelegate?
+    
+    let bag = DisposeBag()
     
     init(frame: CGRect = .zero, viewModel: FeedViewModelInterface) {
         self.viewModel = viewModel
@@ -47,7 +51,8 @@ extension FeedRootView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? TweetCell else { fatalError("Invalid Feed Cell") }
         let vm = viewModel[indexPath.row]
         cell.configure(with: vm)
-        cell.shareTapped.bind { [weak self] text in self?.delegate?.didTapShareTweet(withText: text) }
+        cell.shareTapped.subscribe(onNext: { [weak self] text in self?.delegate?.didTapShareTweet(withText: text)})
+            .disposed(by: bag)
         return cell
     }
     
@@ -102,7 +107,8 @@ extension FeedRootView {
 extension FeedRootView {
     
     private func bindViewModel() {
-        viewModel.state.bind { [unowned self] state in
+        viewModel.state.subscribe(onNext: { [weak self] state in
+            guard let self = self else { return }
             switch state {
             case .success:
                 self.tableView.reloadData()
@@ -112,14 +118,13 @@ extension FeedRootView {
                 self.hideHud()
             case .error:
                 self.hideHud()
-                self.delegate?.didFail(withError: "There was an error. Try it latter")
+                self.delegate?.didFail(withError: "There was an error. Try it later")
             case .fetching:
                 if self.viewModel.flow == .feed {
                     self.showHud()
                 }
             }
-        }
+            })
+            .disposed(by: bag)
     }
-    
-    
 }

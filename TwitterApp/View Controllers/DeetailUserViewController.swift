@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class DeetailUserViewController: UIViewController {
     
@@ -108,6 +110,8 @@ final class DeetailUserViewController: UIViewController {
     
     var viewModel: DetailUserViewModel?
     var rootView: UserRootView?
+    
+    let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,7 +190,8 @@ extension DeetailUserViewController {
 extension DeetailUserViewController: FetchableImage {
     
     private func viewModelBinds() {
-        viewModel?.user.bind { [weak self] user in
+        
+        viewModel?.user.subscribe(onNext: { [weak self] user in
             self?.configure(with: user)
             self?.animateViews()
             self?.fetchImage(from: user.profileImageURL, completion: { data in
@@ -199,16 +204,18 @@ extension DeetailUserViewController: FetchableImage {
                     }
                 }
             })
-        }
+        })
+        .disposed(by: bag)
         
-        viewModel?.state.bind { [weak self] state in
+        viewModel?.state.subscribe(onNext: { [weak self] state in
             switch state {
             case .error:
                 self?.showAlert(withMessage: "An error ocurred")
             default:
                 break
             }
-        }
+        })
+        .disposed(by: bag)
     }
     
 }

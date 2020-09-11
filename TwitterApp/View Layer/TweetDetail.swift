@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class TweetDetail: UIView, FetchableImage {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -108,7 +110,7 @@ final class TweetDetail: UIView, FetchableImage {
         return stack
     }()
     
-    var shareTapped = Binder<String>()
+    var shareTapped = PublishSubject<String>()
     
     var viewModel: TweetViewModel
     
@@ -138,7 +140,7 @@ final class TweetDetail: UIView, FetchableImage {
     }
     
     @objc private func shareTweet() {
-        shareTapped.value = viewModel.text
+        shareTapped.onNext(viewModel.text)
     }
 }
 

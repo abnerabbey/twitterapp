@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ComposeViewController: UIViewController {
     
     var rootView: ComposeRootView?
     var viewModel: ComposeViewModel?
+    
+    let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +44,22 @@ extension ComposeViewController {
     }
     
     private func bindViewModels() {
-        viewModel?.imageSelected.bind({ [weak self] image in
+        viewModel?.imageSelected.subscribe(onNext: { [weak self] image in
             let icon = image.scaled(.init(width: 30, height: 30)).withRenderingMode(.alwaysOriginal)
             self?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: icon, style: .done, target: nil, action: nil)
         })
+        .disposed(by: bag)
         
-        viewModel?.state.bind { [weak self] state in
+        viewModel?.state.subscribe(onNext: { [weak self] state in
             switch state {
             case .fetching:
                 self?.view.showHud()
             case .error, .success:
                 self?.view.hideHud()
-                self?.showAlert(withMessage: "An error ocurred")
+                self?.showAlert(withMessage: "An error ocurrred")
             }
-        }
+        })
+        .disposed(by: bag)
+        
     }
 }

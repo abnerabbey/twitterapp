@@ -85,7 +85,7 @@ extension ComposeRootView: UICollectionViewDelegate {
         viewModel.requestImage(for: indexPath.item, size: frame.size) { [weak self] (image, info) in
             guard let image = image, let info = info else { return }
             if let isThumbnail = info[PHImageResultIsDegradedKey as NSString] as? Bool, !isThumbnail {
-                self?.viewModel.imageSelected.value = image
+                self?.viewModel.imageSelected.onNext(image)
             }
         }
     }

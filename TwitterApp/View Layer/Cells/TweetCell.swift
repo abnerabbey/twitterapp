@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class TweetCell: UITableViewCell, FetchableImage {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -79,27 +81,34 @@ final class TweetCell: UITableViewCell, FetchableImage {
         return stack
     }()
     
-    var shareTapped = Binder<String>()
-    var viewModel: TweetViewModel?
+    var shareTapped = PublishSubject<String>()
+    var viewModel = ReplaySubject<TweetViewModel>.create(bufferSize: 1)
+    let bag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         activateConstraints()
+        bindings()
     }
     
     func configure(with vm: TweetViewModel) {
-        viewModel = vm
-        titleLabel.text = vm.user.name
-        subtitleLabel.text = vm.user.nickname
-        descriptionLabel.text = vm.text
-        shareButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
-        fetchImage()
+        viewModel.onNext(vm)
     }
     
-    private func fetchImage() {
-        guard let vm = viewModel else { return }
-        fetchImage(from: vm.user.profileImageURL) { [weak self] data in
+    private func bindings() {
+        viewModel.subscribe(onNext: { [weak self] vm in
+            guard let self = self else { return }
+            self.titleLabel.text = vm.user.name
+            self.subtitleLabel.text = vm.user.nickname
+            self.descriptionLabel.text = vm.text
+            self.shareButton.addTarget(self, action: #selector(self.shareAction), for: .touchUpInside)
+            self.fetchImage(withIdentifier: vm.user.profileImageURL)
+            }).disposed(by: bag)
+    }
+    
+    private func fetchImage(withIdentifier identifier: String) {
+        fetchImage(from: identifier) { [weak self] data in
             guard let data = data else { return }
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
@@ -113,8 +122,11 @@ final class TweetCell: UITableViewCell, FetchableImage {
     }
     
     @objc func shareAction() {
-        guard let vm = viewModel else { return }
-        shareTapped.value = vm.text
+        viewModel.subscribe(onNext: { [weak self] vm in
+            guard let self = self else { return }
+            self.shareTapped.onNext(vm.text)
+            })
+            .disposed(by: bag)
     }
 }
 

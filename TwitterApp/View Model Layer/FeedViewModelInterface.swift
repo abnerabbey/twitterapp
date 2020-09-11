@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 protocol FeedViewModelInterface {
-    var state: Binder<State> { get set }
+    var state: PublishSubject<State> { get set }
     var flow: Flow { get }
     subscript(index: Int) -> TweetViewModel { get }
     var tweetsCount: Int { get }

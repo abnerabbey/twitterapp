@@ -8,17 +8,19 @@
 
 import Foundation
 import Photos
+import RxCocoa
+import RxSwift
 
 extension PHPhotoLibrary {
     
-    static var authorized: Binder<Bool> {
-        var state = Binder<Bool>()
+    static var authorized: PublishSubject<Bool> {
+        let state = PublishSubject<Bool>()
         DispatchQueue.main.async {
             if authorizationStatus() == .authorized {
-                state.value = true
+                state.onNext(true)
             } else {
                 requestAuthorization { status in
-                    state.value = status == .authorized
+                    state.onNext(status == .authorized)
                 }
             }
         }

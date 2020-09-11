@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class FeedViewModel {
     
     let fetcher: AnyFetcher<[Tweet]>
-    var state = Binder<State>()
+    var state = PublishSubject<State>()
     
-    private var tweets = Binder<[TweetViewModel]>([])
+    private var tweets = BehaviorSubject<[TweetViewModel]>(value: [])
     
     
     init(fetcher: AnyFetcher<[Tweet]>) {
@@ -21,14 +23,14 @@ class FeedViewModel {
     }
     
     func fetchTimeLine() {
-        state.value = .fetching
+        state.onNext(.fetching)
         fetcher.request(.timeline) { [weak self] result in
             switch result {
             case .success(let tweets):
-                self?.tweets.value = tweets.map { TweetViewModel(tweet: $0) }
-                self?.state.value = .success
+                self?.tweets.onNext(tweets.map { TweetViewModel(tweet: $0) })
+                self?.state.onNext(.success)
             case .failure(_):
-                self?.state.value = .error
+                self?.state.onNext(.error)
                 break
             }
         }
@@ -43,12 +45,21 @@ extension FeedViewModel: FeedViewModelInterface {
     
     subscript(index: Int) -> TweetViewModel {
         get {
-            return tweets.value![index]
+            do {
+                let elements = try tweets.value()
+                return elements[index]
+            } catch {
+                fatalError("Error while trying to get the view model")
+            }
         }
     }
     
     var tweetsCount: Int {
-        return tweets.value!.count
+        do {
+            return try tweets.value().count
+        } catch {
+            return 0
+        }
     }
     
 }

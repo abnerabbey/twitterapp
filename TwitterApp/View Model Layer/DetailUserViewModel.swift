@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class DetailUserViewModel {
     
     let fetcher: AnyFetcher<User>
-    var user = Binder<UserViewModel>()
-    var state = Binder<State>()
+    var user = PublishSubject<UserViewModel>()
+    var state = PublishSubject<State>()
     
     init(fetcher: AnyFetcher<User>) {
         self.fetcher = fetcher
@@ -22,14 +24,14 @@ class DetailUserViewModel {
 extension DetailUserViewModel: DetailUserViewModelInterface {
     
     func requestUser() {
-        state.value = .fetching
+        state.onNext(.fetching)
         fetcher.request(.user) { [weak self] result in
             switch result {
             case .success(let user):
-                self?.state.value = .success
-                self?.user.value = UserViewModel(user: user)
+                self?.state.onNext(.success)
+                self?.user.onNext(UserViewModel(user: user))
             case .failure(let error):
-                self?.state.value = .error
+                self?.state.onNext(.error)
             }
         }
     }

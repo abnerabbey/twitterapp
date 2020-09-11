@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class TweetDetailViewController: UIViewController {
     
@@ -21,6 +23,8 @@ final class TweetDetailViewController: UIViewController {
     weak var navCoordinator: NavCoordinator?
     var viewModel: TweetViewModel?
     var rootView: TweetDetail?
+    
+    let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +62,11 @@ extension TweetDetailViewController {
     }
     
     private func bindShareButtonState() {
-        rootView?.shareTapped.bind({ [weak self] text in
-            self?.navCoordinator?.presentShareViewController(withText: text)
+        rootView?.shareTapped.subscribe(onNext: { [weak self] text in
+            guard let self = self else { return }
+            self.navCoordinator?.presentShareViewController(withText: text)
         })
+        .disposed(by: bag)
     }
     
 }

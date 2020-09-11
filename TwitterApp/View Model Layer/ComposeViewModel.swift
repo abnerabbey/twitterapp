@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Photos
+import RxSwift
+import RxCocoa
 
 final class ComposeViewModel: ComposeViewModelInterface {
     
@@ -16,15 +18,15 @@ final class ComposeViewModel: ComposeViewModelInterface {
         return 140
     }
     
-    var photosGrant = Binder<Bool>()
-    var imageSelected = Binder<UIImage>()
+    var photosGrant = BehaviorSubject<Bool>(value: false)
+    var imageSelected = PublishSubject<UIImage>()
     private lazy var photos = ComposeViewModel.loadPhotos()
     private lazy var imageManager = PHCachingImageManager()
     
     let fetcher: AnyFetcher<PostTweetResponse>
     
     var status = String()
-    var state = Binder<State>()
+    var state = PublishSubject<State>()
     
     init(fetcher: AnyFetcher<PostTweetResponse>) {
         self.fetcher = fetcher
@@ -37,16 +39,16 @@ final class ComposeViewModel: ComposeViewModelInterface {
     }
     
     func publishTweet() {
-        state.value = .fetching
+        state.onNext(.fetching)
         let tweet = PostTweet(status: status)
         guard let data = try? JSONEncoder().encode(tweet) else { fatalError("Error encoding tweet") }
         fetcher.request(.postTweet(data)) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.state.value = .success
+                self?.state.onNext(.success)
                 print(response)
             case .failure(let error):
-                self?.state.value = .error
+                self?.state.onNext(.error)
                 print(error)
             }
         }
@@ -82,14 +84,15 @@ extension ComposeViewModel {
  
     func requestPhotosAccess() {
         if PHPhotoLibrary.authorizationStatus() == .authorized {
-            photosGrant.value = true
+            photosGrant.onNext(true)
             photos = ComposeViewModel.loadPhotos()
         } else {
             PHPhotoLibrary.requestAuthorization { [weak self] newStatus in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
-                    self?.photosGrant.value = newStatus == .authorized
-                    guard let value = self?.photosGrant.value, value == true else { return }
-                    self?.photos = ComposeViewModel.loadPhotos()
+                    self.photosGrant.onNext(newStatus == .authorized)
+                    guard let value = try? self.photosGrant.value(), value == true else { return }
+                    self.photos = ComposeViewModel.loadPhotos()
                 }
             }
         }
