@@ -161,7 +161,7 @@ extension DeetailUserViewController {
 extension DeetailUserViewController {
     
     private func animateViews() {
-        UIView.animate(withDuration: 0.3) { [unowned self] in
+        UIView.animate(withDuration: 0.3) {
             self.userLabel.alpha = 1
             self.usernameLabel.alpha = 1
             self.descriptionLabel.alpha = 1
